@@ -7,7 +7,7 @@ namespace InvoiceEvidence
 {
   static class Program
   {
-    public static string DbPath { get; set; } = "R:\\";
+    public static string DbPath { get; set; } = @"C:\Users\Vajgl\OneDrive - Ostravska univerzita\Synchronized\Faktury";
     public static string DbFile
     {
       get => System.IO.Path.Combine(DbPath, "_invoices_db.json");

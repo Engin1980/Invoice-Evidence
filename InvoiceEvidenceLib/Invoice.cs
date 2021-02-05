@@ -9,6 +9,7 @@ namespace InvoiceEvidenceLib
     public string FileName { get; set; }
     public string ShopName { get; set; }
     public string Number { get; set; }
+    public string OrderNumber { get; set; }
     public string Keywords { get; set; }
     public DateTime Date { get; set; }
     public BindingList<InvoiceItem> Items { get; set; } = new BindingList<InvoiceItem>();

@@ -31,6 +31,7 @@ namespace InvoiceEvidence
           Invoice = invoice
         };
         row.Width = pnlItems.Width - 24;
+        row.BorderStyle = BorderStyle.FixedSingle;
         pnlItems.Controls.Add(row);
       }
     }
