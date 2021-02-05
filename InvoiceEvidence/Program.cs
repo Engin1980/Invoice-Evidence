@@ -1,4 +1,4 @@
-﻿using InvoceEvidenceLib;
+﻿using InvoiceEvidenceLib;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,9 +10,9 @@ namespace InvoiceEvidence
     public static string DbPath { get; set; } = "R:\\";
     public static string DbFile
     {
-      get => System.IO.Path.Combine(DbPath, "_invoces_db.json");
+      get => System.IO.Path.Combine(DbPath, "_invoices_db.json");
     }
-    public static List<Invoce> Invoces { get; set; } = new List<Invoce>();
+    public static List<Invoice> Invoices { get; set; } = new List<Invoice>();
 
     /// <summary>
     /// The main entry point for the application.

@@ -1,6 +1,6 @@
 ﻿namespace InvoiceEvidence
 {
-  partial class FrmNewInvoce
+  partial class FrmNewInvoice
   {
     /// <summary>
     /// Required designer variable.
@@ -32,15 +32,15 @@
       this.splMain = new System.Windows.Forms.SplitContainer();
       this.lstFiles = new System.Windows.Forms.ListBox();
       this.pnlImage = new System.Windows.Forms.Panel();
-      this.picInvoce = new InvoiceEvidence.InvoceImage();
+      this.picInvoice = new InvoiceEvidence.InvoiceImage();
       this.pnlData = new System.Windows.Forms.Panel();
       this.splitContainer2 = new System.Windows.Forms.SplitContainer();
       this.dtpDate = new System.Windows.Forms.DateTimePicker();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.btnSave = new System.Windows.Forms.Button();
       this.label6 = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.txtComment = new System.Windows.Forms.TextBox();
-      this.invoceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.txtKeywords = new System.Windows.Forms.TextBox();
       this.txtNumber = new System.Windows.Forms.TextBox();
       this.txtShop = new System.Windows.Forms.TextBox();
@@ -65,7 +65,7 @@
       this.splitContainer2.Panel1.SuspendLayout();
       this.splitContainer2.Panel2.SuspendLayout();
       this.splitContainer2.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.invoceBindingSource)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       this.groupBox1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
@@ -104,22 +104,22 @@
       // pnlImage
       // 
       this.pnlImage.AutoScroll = true;
-      this.pnlImage.Controls.Add(this.picInvoce);
+      this.pnlImage.Controls.Add(this.picInvoice);
       this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlImage.Location = new System.Drawing.Point(0, 223);
       this.pnlImage.Name = "pnlImage";
       this.pnlImage.Size = new System.Drawing.Size(1017, 366);
       this.pnlImage.TabIndex = 1;
       // 
-      // picInvoce
+      // picInvoice
       // 
-      this.picInvoce.AutoScroll = true;
-      this.picInvoce.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.picInvoce.Location = new System.Drawing.Point(0, 0);
-      this.picInvoce.Margin = new System.Windows.Forms.Padding(4);
-      this.picInvoce.Name = "picInvoce";
-      this.picInvoce.Size = new System.Drawing.Size(1017, 366);
-      this.picInvoce.TabIndex = 0;
+      this.picInvoice.AutoScroll = true;
+      this.picInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.picInvoice.Location = new System.Drawing.Point(0, 0);
+      this.picInvoice.Margin = new System.Windows.Forms.Padding(4);
+      this.picInvoice.Name = "picInvoice";
+      this.picInvoice.Size = new System.Drawing.Size(1017, 366);
+      this.picInvoice.TabIndex = 0;
       // 
       // pnlData
       // 
@@ -164,13 +164,17 @@
       this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dtpDate.CustomFormat = "d. MMMM yyyy";
-      this.dtpDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.invoceBindingSource, "Date", true));
+      this.dtpDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.invoiceBindingSource, "Date", true));
       this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
       this.dtpDate.Location = new System.Drawing.Point(109, 99);
       this.dtpDate.Name = "dtpDate";
       this.dtpDate.Size = new System.Drawing.Size(215, 23);
       this.dtpDate.TabIndex = 19;
       this.dtpDate.Enter += new System.EventHandler(this.ctr_Enter);
+      // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
       // 
       // btnSave
       // 
@@ -180,7 +184,7 @@
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(215, 26);
       this.btnSave.TabIndex = 18;
-      this.btnSave.Text = "Save invoce to system";
+      this.btnSave.Text = "Save invoice to system";
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
@@ -206,22 +210,18 @@
       // 
       this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "Comment", true));
+      this.txtComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Comment", true));
       this.txtComment.Location = new System.Drawing.Point(109, 157);
       this.txtComment.Name = "txtComment";
       this.txtComment.Size = new System.Drawing.Size(215, 23);
       this.txtComment.TabIndex = 15;
       this.txtComment.Enter += new System.EventHandler(this.ctr_Enter);
       // 
-      // invoceBindingSource
-      // 
-      this.invoceBindingSource.DataSource = typeof(InvoceEvidenceLib.Invoce);
-      // 
       // txtKeywords
       // 
       this.txtKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtKeywords.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "Keywords", true));
+      this.txtKeywords.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Keywords", true));
       this.txtKeywords.Location = new System.Drawing.Point(109, 128);
       this.txtKeywords.Name = "txtKeywords";
       this.txtKeywords.Size = new System.Drawing.Size(215, 23);
@@ -232,7 +232,7 @@
       // 
       this.txtNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "Number", true));
+      this.txtNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Number", true));
       this.txtNumber.Location = new System.Drawing.Point(109, 70);
       this.txtNumber.Name = "txtNumber";
       this.txtNumber.Size = new System.Drawing.Size(215, 23);
@@ -243,7 +243,7 @@
       // 
       this.txtShop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtShop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "ShopName", true));
+      this.txtShop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "ShopName", true));
       this.txtShop.Location = new System.Drawing.Point(109, 41);
       this.txtShop.Name = "txtShop";
       this.txtShop.Size = new System.Drawing.Size(215, 23);
@@ -254,7 +254,7 @@
       // 
       this.txtFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtFile.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "FileName", true));
+      this.txtFile.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "FileName", true));
       this.txtFile.Location = new System.Drawing.Point(109, 12);
       this.txtFile.Name = "txtFile";
       this.txtFile.ReadOnly = true;
@@ -306,7 +306,7 @@
       this.groupBox1.Size = new System.Drawing.Size(674, 223);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "Invoce items (unused leave empty):";
+      this.groupBox1.Text = "Invoice items (unused leave empty):";
       // 
       // dataGridView1
       // 
@@ -350,9 +350,9 @@
       // itemsBindingSource
       // 
       this.itemsBindingSource.DataMember = "Items";
-      this.itemsBindingSource.DataSource = this.invoceBindingSource;
+      this.itemsBindingSource.DataSource = this.invoiceBindingSource;
       // 
-      // FrmNewInvoce
+      // FrmNewInvoice
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -360,9 +360,9 @@
       this.Controls.Add(this.splMain);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "FrmNewInvoce";
-      this.Text = "FrmNewInvoce";
-      this.Load += new System.EventHandler(this.FrmNewInvoce_Load);
+      this.Name = "FrmNewInvoice";
+      this.Text = "FrmNewInvoice";
+      this.Load += new System.EventHandler(this.FrmNewInvoice_Load);
       this.splMain.Panel1.ResumeLayout(false);
       this.splMain.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).EndInit();
@@ -374,7 +374,7 @@
       this.splitContainer2.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
       this.splitContainer2.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.invoceBindingSource)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
       this.groupBox1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
@@ -396,13 +396,13 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.BindingSource invoceBindingSource;
+    private System.Windows.Forms.BindingSource invoiceBindingSource;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.TextBox txtComment;
     private System.Windows.Forms.Button btnSave;
     private System.Windows.Forms.Panel pnlImage;
-    private InvoceImage picInvoce;
+    private InvoiceImage picInvoice;
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.DateTimePicker dtpDate;
     private System.Windows.Forms.DataGridView dataGridView1;

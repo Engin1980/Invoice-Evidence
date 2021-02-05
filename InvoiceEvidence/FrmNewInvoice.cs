@@ -1,4 +1,4 @@
-﻿using InvoceEvidenceLib;
+﻿using InvoiceEvidenceLib;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace InvoiceEvidence
 {
-  public partial class FrmNewInvoce : Form
+  public partial class FrmNewInvoice : Form
   {
     class ListBoxItem
     {
-      public Invoce Value { get; set; }
+      public Invoice Value { get; set; }
       public string Label { get => Value.FileName; }
       public override string ToString() => Label;
     }
@@ -32,7 +32,7 @@ namespace InvoiceEvidence
         } else
         {
           splMain.Panel2.Visible = true;
-          invoceBindingSource.DataSource = value.Value;
+          invoiceBindingSource.DataSource = value.Value;
         }
         
       }
@@ -40,16 +40,16 @@ namespace InvoiceEvidence
 
     private string[] imageExtensions = { ".png", ".jpg", ".bmp" };
 
-    public FrmNewInvoce()
+    public FrmNewInvoice()
     {
       InitializeComponent();
-      invoceBindingSource.DataSourceChanged += InvoceBindingSource_DataSourceChanged;
-      picInvoce.BlockTextRecognized += PicInvoce_BlockTextRecognized;
+      invoiceBindingSource.DataSourceChanged += InvoiceBindingSource_DataSourceChanged;
+      picInvoice.BlockTextRecognized += PicInvoice_BlockTextRecognized;
     }
 
     object lastControl = null;
 
-    private void PicInvoce_BlockTextRecognized(InvoceImage sender, string text)
+    private void PicInvoice_BlockTextRecognized(InvoiceImage sender, string text)
     {
       if (text != null) text = text.Trim();
       if (lastControl != null)
@@ -140,12 +140,12 @@ namespace InvoiceEvidence
       return ret;
     }
 
-    private void InvoceBindingSource_DataSourceChanged(object sender, EventArgs e)
+    private void InvoiceBindingSource_DataSourceChanged(object sender, EventArgs e)
     {
       //RedrawImage();
     }
 
-    private void FrmNewInvoce_Load(object sender, EventArgs e)
+    private void FrmNewInvoice_Load(object sender, EventArgs e)
     {
       splMain.Panel2.Visible = false;
       RefreshFilesList();
@@ -156,9 +156,9 @@ namespace InvoiceEvidence
       fileItems = System.IO.Directory.GetFiles(Program.DbPath)
         .Where(q => q.Length > 4 && imageExtensions.Contains(q.Substring(q.Length - 4)))
         .Select(q => new FileInfo(q))
-        .Where(q => !Program.Invoces.Any(r => r.FileName == q.Name))
+        .Where(q => !Program.Invoices.Any(r => r.FileName == q.Name))
         .OrderBy(q => q.Name)
-        .Select(q => new ListBoxItem() { Value = new Invoce(q.Name, 7) })
+        .Select(q => new ListBoxItem() { Value = new Invoice(q.Name, 7) })
         .ToList();
 
       lstFiles.DataSource = fileItems;
@@ -172,12 +172,12 @@ namespace InvoiceEvidence
       if (lstFiles.SelectedIndex < 0)
       {
         Item = null;
-        picInvoce.ClearImageFile();
+        picInvoice.ClearImageFile();
       }
       else
       {
         Item = lstFiles.SelectedItem as ListBoxItem;
-        picInvoce.SetImageFile(
+        picInvoice.SetImageFile(
           System.IO.Path.Combine(Program.DbPath, Item.Value.FileName));
       }
     }
@@ -190,7 +190,7 @@ namespace InvoiceEvidence
     private void btnSave_Click(object sender, EventArgs e)
     {
       Item.Value.DiscardEmptyItems();
-      Program.Invoces.Add(Item.Value);
+      Program.Invoices.Add(Item.Value);
       int index = lstFiles.SelectedIndex;
 
       lstFiles.DataSource = null;

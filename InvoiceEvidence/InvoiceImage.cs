@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace InvoiceEvidence
 {
-  public partial class InvoceImage : UserControl
+  public partial class InvoiceImage : UserControl
   {
-    public delegate void OnBlockTextRecognized(InvoceImage sender, string text);
+    public delegate void OnBlockTextRecognized(InvoiceImage sender, string text);
     public event OnBlockTextRecognized BlockTextRecognized;
 
     private void Pic_MouseWheel(object sender, MouseEventArgs e)
@@ -90,7 +90,7 @@ namespace InvoiceEvidence
       pic.Image = scalledImage;
     }
 
-    public InvoceImage()
+    public InvoiceImage()
     {
       InitializeComponent();
       pic.MouseWheel += Pic_MouseWheel;

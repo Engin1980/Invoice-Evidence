@@ -53,11 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoceRow.cs">
+    <Compile Include="InvoiceRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InvoceRow.Designer.cs">
-      <DependentUpon>InvoceRow.cs</DependentUpon>
+    <Compile Include="InvoiceRow.Designer.cs">
+      <DependentUpon>InvoiceRow.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -65,33 +65,35 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNewInvoce.cs">
+    <Compile Include="FrmNewInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNewInvoce.Designer.cs">
-      <DependentUpon>FrmNewInvoce.cs</DependentUpon>
+    <Compile Include="FrmNewInvoice.Designer.cs">
+      <DependentUpon>FrmNewInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoceImage.cs">
+    <Compile Include="InvoiceImage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InvoceImage.Designer.cs">
-      <DependentUpon>InvoceImage.cs</DependentUpon>
+    <Compile Include="InvoiceImage.Designer.cs">
+      <DependentUpon>InvoiceImage.cs</DependentUpon>
     </Compile>
     <Compile Include="OCR\IOCR.cs" />
     <Compile Include="OCR\TesseractOCR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InvoceRow.resx">
-      <DependentUpon>InvoceRow.cs</DependentUpon>
+    <EmbeddedResource Include="InvoiceRow.resx">
+      <DependentUpon>InvoiceRow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNewInvoce.resx">
-      <DependentUpon>FrmNewInvoce.cs</DependentUpon>
+    <EmbeddedResource Include="FrmNewInvoice.resx">
+      <DependentUpon>FrmNewInvoice.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="InvoceImage.resx">
-      <DependentUpon>InvoceImage.cs</DependentUpon>
+    <EmbeddedResource Include="InvoiceImage.resx">
+      <DependentUpon>InvoiceImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,7 +128,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icons\license.txt" />
+    <Content Include="icons\box.png" />
+    <Content Include="icons\folder.png" />
+    <Content Include="icons\reload.png" />
+    <Content Include="icons\save.png" />
+    <Content Include="icons\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

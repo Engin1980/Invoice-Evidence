@@ -1,6 +1,6 @@
 ﻿namespace InvoiceEvidence
 {
-  partial class InvoceImage
+  partial class InvoiceImage
   {
     /// <summary> 
     /// Required designer variable.
@@ -111,13 +111,13 @@
       this.zoomautoToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
       this.zoomautoToolStripMenuItem.Text = "Zoom &auto";
       // 
-      // InvoceImage
+      // InvoiceImage
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoScroll = true;
       this.Controls.Add(this.pic);
-      this.Name = "InvoceImage";
+      this.Name = "InvoiceImage";
       this.Size = new System.Drawing.Size(766, 482);
       ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
       this.cmsPic.ResumeLayout(false);

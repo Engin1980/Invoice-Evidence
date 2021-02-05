@@ -1,6 +1,6 @@
 ﻿namespace InvoiceEvidence
 {
-  partial class InvoceRow
+  partial class InvoiceRow
   {
     /// <summary> 
     /// Required designer variable.
@@ -29,20 +29,20 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoceRow));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceRow));
       this.lblShop = new System.Windows.Forms.Label();
       this.lblDate = new System.Windows.Forms.Label();
       this.lblNumber = new System.Windows.Forms.Label();
       this.btnView = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
-      this.invoceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      ((System.ComponentModel.ISupportInitialize)(this.invoceBindingSource)).BeginInit();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       this.SuspendLayout();
       // 
       // lblShop
       // 
       this.lblShop.AutoSize = true;
-      this.lblShop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "ShopName", true));
+      this.lblShop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "ShopName", true));
       this.lblShop.Location = new System.Drawing.Point(24, 48);
       this.lblShop.Name = "lblShop";
       this.lblShop.Size = new System.Drawing.Size(44, 17);
@@ -52,7 +52,7 @@
       // lblDate
       // 
       this.lblDate.AutoSize = true;
-      this.lblDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "Date", true));
+      this.lblDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Date", true));
       this.lblDate.Location = new System.Drawing.Point(24, 28);
       this.lblDate.Name = "lblDate";
       this.lblDate.Size = new System.Drawing.Size(116, 17);
@@ -62,7 +62,7 @@
       // lblNumber
       // 
       this.lblNumber.AutoSize = true;
-      this.lblNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "Number", true));
+      this.lblNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Number", true));
       this.lblNumber.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.lblNumber.Location = new System.Drawing.Point(12, 8);
       this.lblNumber.Name = "lblNumber";
@@ -85,18 +85,18 @@
       this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoceBindingSource, "ItemsOverview", true));
+      this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "ItemsOverview", true));
       this.label1.Location = new System.Drawing.Point(247, 8);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(603, 56);
       this.label1.TabIndex = 7;
       this.label1.Text = "-";
       // 
-      // invoceBindingSource
+      // invoiceBindingSource
       // 
-      this.invoceBindingSource.DataSource = typeof(InvoceEvidenceLib.Invoce);
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
       // 
-      // InvoceRow
+      // InvoiceRow
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,9 +107,9 @@
       this.Controls.Add(this.lblShop);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "InvoceRow";
+      this.Name = "InvoiceRow";
       this.Size = new System.Drawing.Size(907, 73);
-      ((System.ComponentModel.ISupportInitialize)(this.invoceBindingSource)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -120,7 +120,7 @@
     private System.Windows.Forms.Label lblShop;
     private System.Windows.Forms.Label lblDate;
     private System.Windows.Forms.Label lblNumber;
-    private System.Windows.Forms.BindingSource invoceBindingSource;
+    private System.Windows.Forms.BindingSource invoiceBindingSource;
     private System.Windows.Forms.Button btnView;
     private System.Windows.Forms.Label label1;
   }

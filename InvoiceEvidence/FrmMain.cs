@@ -1,4 +1,4 @@
-﻿using InvoceEvidenceLib;
+﻿using InvoiceEvidenceLib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace InvoiceEvidence
 
     private void btnAnalyseNewFiles_Click(object sender, EventArgs e)
     {
-      new FrmNewInvoce().ShowDialog();
+      new FrmNewInvoice().ShowDialog();
       RefreshView();
     }
 
@@ -24,11 +24,11 @@ namespace InvoiceEvidence
     {
       pnlItems.Controls.Clear();
 
-      foreach (var invoce in Program.Invoces)
+      foreach (var invoice in Program.Invoices)
       {
-        InvoceRow row = new InvoceRow()
+        InvoiceRow row = new InvoiceRow()
         {
-          Invoce = invoce
+          Invoice = invoice
         };
         row.Width = pnlItems.Width - 24;
         pnlItems.Controls.Add(row);
@@ -50,7 +50,7 @@ namespace InvoiceEvidence
 
     private void btnReload_Click(object sender, EventArgs e)
     {
-      if (MessageBox.Show("Really reload data from storage?",
+      if (MessageBox.Show("Reload data from storage?",
         "Reload database",
         MessageBoxButtons.YesNo,
         MessageBoxIcon.Question,
@@ -60,7 +60,7 @@ namespace InvoiceEvidence
 
     private void ReloadDatabase()
     {
-      if (System.IO.File.Exists(Program.DbFile) == false)
+      if (File.Exists(Program.DbFile) == false)
       {
         MessageBox.Show("Unable to find database file in the working folder. No data loaded.",
           "Unable to find database.",
@@ -71,8 +71,8 @@ namespace InvoiceEvidence
       using (StreamReader rdr = new StreamReader(File.Open(Program.DbFile, FileMode.Open)))
       {
         JsonSerializer ser = new JsonSerializer();
-        List<Invoce> tmp = (List<Invoce>)ser.Deserialize(rdr, typeof(List<Invoce>));
-        Program.Invoces = tmp;
+        List<Invoice> tmp = (List<Invoice>)ser.Deserialize(rdr, typeof(List<Invoice>));
+        Program.Invoices = tmp;
       }
       RefreshView();
 
@@ -91,7 +91,7 @@ namespace InvoiceEvidence
       using (StreamWriter wrt = new StreamWriter(File.Open(tmpFile, FileMode.Create)))
       {
         JsonSerializer ser = new JsonSerializer();
-        ser.Serialize(wrt, Program.Invoces);
+        ser.Serialize(wrt, Program.Invoices);
       }
 
       File.Copy(tmpFile, Program.DbFile, true);

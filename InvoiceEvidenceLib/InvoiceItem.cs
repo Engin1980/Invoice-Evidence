@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvoiceEvidenceLib
 {
-  public class InvoceItem
+  public class InvoiceItem
   {
     public string Label { get; set; }
     public string Keywords { get; set; }

@@ -110,7 +110,7 @@
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmMain";
-      this.Text = "Invoce Evidence";
+      this.Text = "Invoice Evidence";
       this.Load += new System.EventHandler(this.FrmMain_Load);
       this.panel1.ResumeLayout(false);
       this.ResumeLayout(false);

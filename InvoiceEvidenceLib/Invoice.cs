@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace InvoiceEvidenceLib
 {
-  public class Invoce
+  public class Invoice
   {
     public string FileName { get; set; }
     public string ShopName { get; set; }
     public string Number { get; set; }
     public string Keywords { get; set; }
     public DateTime Date { get; set; }
-    public BindingList<InvoceItem> Items { get; set; } = new BindingList<InvoceItem>();
+    public BindingList<InvoiceItem> Items { get; set; } = new BindingList<InvoiceItem>();
     public string Comment { get; set; }
 
     public string ItemsOverview
@@ -20,17 +20,17 @@ namespace InvoiceEvidenceLib
     }
 
 
-    public Invoce()
+    public Invoice()
     {
 
     }
 
-    public Invoce(string fileName, int presetItemsCount)
+    public Invoice(string fileName, int presetItemsCount)
     {
       FileName = fileName;
       for (int i = 0; i < presetItemsCount; i++)
       {
-        Items.Add(new InvoceItem());
+        Items.Add(new InvoiceItem());
       }
     }
 
