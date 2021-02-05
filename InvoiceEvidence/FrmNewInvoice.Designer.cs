@@ -55,6 +55,8 @@
       this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.keywordsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.txtOrderNumber = new System.Windows.Forms.TextBox();
+      this.label8 = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).BeginInit();
       this.splMain.Panel1.SuspendLayout();
       this.splMain.Panel2.SuspendLayout();
@@ -106,9 +108,9 @@
       this.pnlImage.AutoScroll = true;
       this.pnlImage.Controls.Add(this.picInvoice);
       this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pnlImage.Location = new System.Drawing.Point(0, 223);
+      this.pnlImage.Location = new System.Drawing.Point(0, 250);
       this.pnlImage.Name = "pnlImage";
-      this.pnlImage.Size = new System.Drawing.Size(1017, 366);
+      this.pnlImage.Size = new System.Drawing.Size(1017, 339);
       this.pnlImage.TabIndex = 1;
       // 
       // picInvoice
@@ -118,7 +120,7 @@
       this.picInvoice.Location = new System.Drawing.Point(0, 0);
       this.picInvoice.Margin = new System.Windows.Forms.Padding(4);
       this.picInvoice.Name = "picInvoice";
-      this.picInvoice.Size = new System.Drawing.Size(1017, 366);
+      this.picInvoice.Size = new System.Drawing.Size(1017, 339);
       this.picInvoice.TabIndex = 0;
       // 
       // pnlData
@@ -127,7 +129,7 @@
       this.pnlData.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlData.Location = new System.Drawing.Point(0, 0);
       this.pnlData.Name = "pnlData";
-      this.pnlData.Size = new System.Drawing.Size(1017, 223);
+      this.pnlData.Size = new System.Drawing.Size(1017, 250);
       this.pnlData.TabIndex = 0;
       // 
       // splitContainer2
@@ -138,6 +140,8 @@
       // 
       // splitContainer2.Panel1
       // 
+      this.splitContainer2.Panel1.Controls.Add(this.txtOrderNumber);
+      this.splitContainer2.Panel1.Controls.Add(this.label8);
       this.splitContainer2.Panel1.Controls.Add(this.dtpDate);
       this.splitContainer2.Panel1.Controls.Add(this.btnSave);
       this.splitContainer2.Panel1.Controls.Add(this.label6);
@@ -155,7 +159,7 @@
       // splitContainer2.Panel2
       // 
       this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-      this.splitContainer2.Size = new System.Drawing.Size(1017, 223);
+      this.splitContainer2.Size = new System.Drawing.Size(1017, 250);
       this.splitContainer2.SplitterDistance = 339;
       this.splitContainer2.TabIndex = 0;
       // 
@@ -180,7 +184,7 @@
       // 
       this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSave.Location = new System.Drawing.Point(109, 186);
+      this.btnSave.Location = new System.Drawing.Point(109, 215);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(215, 26);
       this.btnSave.TabIndex = 18;
@@ -191,7 +195,7 @@
       // label6
       // 
       this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(15, 160);
+      this.label6.Location = new System.Drawing.Point(15, 189);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(78, 17);
       this.label6.TabIndex = 17;
@@ -200,7 +204,7 @@
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(15, 131);
+      this.label5.Location = new System.Drawing.Point(15, 160);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(89, 17);
       this.label5.TabIndex = 16;
@@ -211,7 +215,7 @@
       this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.txtComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Comment", true));
-      this.txtComment.Location = new System.Drawing.Point(109, 157);
+      this.txtComment.Location = new System.Drawing.Point(109, 186);
       this.txtComment.Name = "txtComment";
       this.txtComment.Size = new System.Drawing.Size(215, 23);
       this.txtComment.TabIndex = 15;
@@ -222,7 +226,7 @@
       this.txtKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.txtKeywords.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "Keywords", true));
-      this.txtKeywords.Location = new System.Drawing.Point(109, 128);
+      this.txtKeywords.Location = new System.Drawing.Point(109, 157);
       this.txtKeywords.Name = "txtKeywords";
       this.txtKeywords.Size = new System.Drawing.Size(215, 23);
       this.txtKeywords.TabIndex = 14;
@@ -303,7 +307,7 @@
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.groupBox1.Location = new System.Drawing.Point(0, 0);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(674, 223);
+      this.groupBox1.Size = new System.Drawing.Size(674, 250);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Invoice items (unused leave empty):";
@@ -324,7 +328,7 @@
       this.dataGridView1.DataSource = this.itemsBindingSource;
       this.dataGridView1.Location = new System.Drawing.Point(6, 26);
       this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.Size = new System.Drawing.Size(656, 190);
+      this.dataGridView1.Size = new System.Drawing.Size(656, 217);
       this.dataGridView1.TabIndex = 48;
       this.dataGridView1.Enter += new System.EventHandler(this.ctr_Enter);
       // 
@@ -351,6 +355,25 @@
       // 
       this.itemsBindingSource.DataMember = "Items";
       this.itemsBindingSource.DataSource = this.invoiceBindingSource;
+      // 
+      // txtOrderNumber
+      // 
+      this.txtOrderNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtOrderNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "OrderNumber", true));
+      this.txtOrderNumber.Location = new System.Drawing.Point(109, 128);
+      this.txtOrderNumber.Name = "txtOrderNumber";
+      this.txtOrderNumber.Size = new System.Drawing.Size(215, 23);
+      this.txtOrderNumber.TabIndex = 23;
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Location = new System.Drawing.Point(15, 131);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(98, 17);
+      this.label8.TabIndex = 22;
+      this.label8.Text = "Order No.:";
       // 
       // FrmNewInvoice
       // 
@@ -410,5 +433,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn keywordsDataGridViewTextBoxColumn;
     private System.Windows.Forms.BindingSource itemsBindingSource;
+    private System.Windows.Forms.TextBox txtOrderNumber;
+    private System.Windows.Forms.Label label8;
   }
 }
