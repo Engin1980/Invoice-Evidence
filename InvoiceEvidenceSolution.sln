@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceEvidence", "InvoiceEvidence\InvoiceEvidence.csproj", "{127D4363-7F6B-4C65-8A69-98AB13F9EE99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceEvidenceLib", "InvoiceEvidenceLib\InvoiceEvidenceLib.csproj", "{A89B65F5-DAEA-4890-8399-8E4BD048655C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{127D4363-7F6B-4C65-8A69-98AB13F9EE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127D4363-7F6B-4C65-8A69-98AB13F9EE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127D4363-7F6B-4C65-8A69-98AB13F9EE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127D4363-7F6B-4C65-8A69-98AB13F9EE99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89B65F5-DAEA-4890-8399-8E4BD048655C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89B65F5-DAEA-4890-8399-8E4BD048655C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89B65F5-DAEA-4890-8399-8E4BD048655C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89B65F5-DAEA-4890-8399-8E4BD048655C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D297940-CF2F-48A8-A2CE-34CE1F7DCF93}
+	EndGlobalSection
+EndGlobal
