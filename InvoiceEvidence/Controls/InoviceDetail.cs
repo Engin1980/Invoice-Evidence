@@ -7,7 +7,13 @@ namespace InvoiceEvidence.Controls
 {
   public partial class InoviceDetail : UserControl
   {
-    object lastControl = null;
+    public bool RecognitionEnabled
+    {
+      get => this.picInvoice.RecognitionEnabled;
+      set => this.picInvoice.RecognitionEnabled = value;
+    }
+
+    private object lastControl = null;
 
     private Invoice _Invoice;
     public Invoice Invoice
@@ -16,9 +22,12 @@ namespace InvoiceEvidence.Controls
       set
       {
         _Invoice = value;
-        if (value != null)
+        if (value != null) {
+          this.invoiceBindingSource.DataSource = value;
           picInvoice.SetImageFile(
             System.IO.Path.Combine(Program.DbPath, value.FileName));
+          picInvoice.ZoomFit();
+        }
         else
           picInvoice.ClearImageFile();
       }
@@ -77,7 +86,7 @@ namespace InvoiceEvidence.Controls
 
     private void InoviceDetail_Load(object sender, EventArgs e)
     {
-
+      picInvoice.BlockTextRecognized += PicInvoice_BlockTextRecognized;
     }
 
     private void ctr_Enter(object sender, EventArgs e)

@@ -32,21 +32,21 @@
       this.splMain = new System.Windows.Forms.SplitContainer();
       this.lstFiles = new System.Windows.Forms.ListBox();
       this.pnlImage = new System.Windows.Forms.Panel();
-      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.pnlBottom = new System.Windows.Forms.Panel();
       this.pnlFill = new System.Windows.Forms.Panel();
       this.invoceDetail = new InvoiceEvidence.Controls.InoviceDetail();
+      this.pnlBottom = new System.Windows.Forms.Panel();
       this.btnSave = new System.Windows.Forms.Button();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).BeginInit();
       this.splMain.Panel1.SuspendLayout();
       this.splMain.Panel2.SuspendLayout();
       this.splMain.SuspendLayout();
       this.pnlImage.SuspendLayout();
+      this.pnlFill.SuspendLayout();
+      this.pnlBottom.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
-      this.pnlBottom.SuspendLayout();
-      this.pnlFill.SuspendLayout();
       this.SuspendLayout();
       // 
       // splMain
@@ -89,31 +89,13 @@
       this.pnlImage.Size = new System.Drawing.Size(1004, 474);
       this.pnlImage.TabIndex = 1;
       // 
-      // invoiceBindingSource
-      // 
-      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
-      // 
-      // itemsBindingSource
-      // 
-      this.itemsBindingSource.DataMember = "Items";
-      this.itemsBindingSource.DataSource = this.invoiceBindingSource;
-      // 
-      // pnlBottom
-      // 
-      this.pnlBottom.Controls.Add(this.btnSave);
-      this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.pnlBottom.Location = new System.Drawing.Point(0, 434);
-      this.pnlBottom.Name = "pnlBottom";
-      this.pnlBottom.Size = new System.Drawing.Size(1004, 40);
-      this.pnlBottom.TabIndex = 0;
-      // 
       // pnlFill
       // 
       this.pnlFill.Controls.Add(this.invoceDetail);
       this.pnlFill.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlFill.Location = new System.Drawing.Point(0, 0);
       this.pnlFill.Name = "pnlFill";
-      this.pnlFill.Size = new System.Drawing.Size(1004, 434);
+      this.pnlFill.Size = new System.Drawing.Size(1004, 414);
       this.pnlFill.TabIndex = 1;
       // 
       // invoceDetail
@@ -124,8 +106,17 @@
       this.invoceDetail.Location = new System.Drawing.Point(0, 0);
       this.invoceDetail.Margin = new System.Windows.Forms.Padding(4);
       this.invoceDetail.Name = "invoceDetail";
-      this.invoceDetail.Size = new System.Drawing.Size(1004, 434);
+      this.invoceDetail.Size = new System.Drawing.Size(1004, 414);
       this.invoceDetail.TabIndex = 0;
+      // 
+      // pnlBottom
+      // 
+      this.pnlBottom.Controls.Add(this.btnSave);
+      this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.pnlBottom.Location = new System.Drawing.Point(0, 414);
+      this.pnlBottom.Name = "pnlBottom";
+      this.pnlBottom.Size = new System.Drawing.Size(1004, 60);
+      this.pnlBottom.TabIndex = 0;
       // 
       // btnSave
       // 
@@ -133,10 +124,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.btnSave.Location = new System.Drawing.Point(13, 7);
       this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(979, 28);
+      this.btnSave.Size = new System.Drawing.Size(979, 41);
       this.btnSave.TabIndex = 0;
       this.btnSave.Text = "Confirm changes and add this invoice into the database";
       this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
+      // 
+      // itemsBindingSource
+      // 
+      this.itemsBindingSource.DataMember = "Items";
+      this.itemsBindingSource.DataSource = this.invoiceBindingSource;
       // 
       // FrmNewInvoice
       // 
@@ -154,10 +155,10 @@
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).EndInit();
       this.splMain.ResumeLayout(false);
       this.pnlImage.ResumeLayout(false);
+      this.pnlFill.ResumeLayout(false);
+      this.pnlBottom.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
-      this.pnlBottom.ResumeLayout(false);
-      this.pnlFill.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }

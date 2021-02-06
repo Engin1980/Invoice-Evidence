@@ -8,6 +8,7 @@ namespace InvoiceEvidence.OCR
   {
     private const string TESSERACT_MASTER_DIR = "tesseract-master.1153";
     private static string TemporaryDirectory { get; set; } = "R:\\Temp";
+    private static string LANGUAGES = "ces+eng";
     private static string GetTesseractMasterDirectory()
     {
       string ret = System.Reflection.Assembly.GetEntryAssembly().Location;
@@ -78,7 +79,7 @@ namespace InvoiceEvidence.OCR
             // Output file (tesseract add '.txt' at the end)
             textFileName +
             // Languages.
-            " -l eng+ces"
+            " -l " + LANGUAGES
       };
 
       // Start tesseract.

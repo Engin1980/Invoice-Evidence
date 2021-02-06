@@ -8,37 +8,40 @@ namespace InvoiceEvidence
   public partial class InvoiceImage : UserControl
   {
     public delegate void OnBlockTextRecognized(InvoiceImage sender, string text);
+
     public event OnBlockTextRecognized BlockTextRecognized;
 
-    private void Pic_MouseWheel(object sender, MouseEventArgs e)
+    public bool RecognitionEnabled
     {
-      if (e.Delta < 0)
-        ZoomIn();
-      else
-        ZoomOut();
+      get => this.chkRecognizeOn.Checked;
+      set => this.chkRecognizeOn.Checked = value;
     }
 
-    class Zoom
+    private class Zoom
     {
       private const double STEP = 0.1;
       private const double MIN = 0.1;
+      private const double MAX = 10;
       public double Value { get; private set; } = 1;
 
       public void Reset()
       {
-        Value = 1;
+        Set(1);
+      }
+
+      public void Set(double value)
+      {
+        Value = Math.Max(MIN, Math.Min(MAX, value));
       }
 
       public void ZoomIn()
       {
-        Value = Value + STEP;
+        Set(Value + STEP);
       }
 
       public void ZoomOut()
       {
-        Value = Value - STEP;
-        if (Value < MIN)
-          Value = MIN;
+        Set(Value - STEP);
       }
     }
 
@@ -49,10 +52,10 @@ namespace InvoiceEvidence
 
     public void ClearImageFile()
     {
-      this.originalImage = null;
-      this.scalledImage = null;
-      this.zoom.Reset();
-      this.pic.Image = null;
+      originalImage = null;
+      scalledImage = null;
+      zoom.Reset();
+      pic.Image = null;
     }
 
     public void SetImageFile(string fileName)
@@ -72,9 +75,19 @@ namespace InvoiceEvidence
       zoom.ZoomIn();
       RefreshImage();
     }
+
     public void ZoomOut()
     {
       zoom.ZoomOut();
+      RefreshImage();
+    }
+
+    public void ZoomFit()
+    {
+      int imgWidth = originalImage.Width;
+      int cmpWidth = pnlContent.Width;
+      double zoom = cmpWidth / (double)imgWidth;
+      this.zoom.Set(zoom);
       RefreshImage();
     }
 
@@ -93,7 +106,6 @@ namespace InvoiceEvidence
     public InvoiceImage()
     {
       InitializeComponent();
-      pic.MouseWheel += Pic_MouseWheel;
     }
 
     private void zoominToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -112,6 +124,7 @@ namespace InvoiceEvidence
     }
 
     private Point mouseDownPoint;
+
     private void pic_MouseDown(object sender, MouseEventArgs e)
     {
       mouseDownPoint = e.Location;
@@ -122,8 +135,11 @@ namespace InvoiceEvidence
       Point mouseUpPoint = e.Location;
 
       if (e.Button == MouseButtons.Left)
-        DoImageRecognition(mouseDownPoint, mouseUpPoint);
-      else
+      {
+        if (chkRecognizeOn.Checked)
+          DoImageRecognition(mouseDownPoint, mouseUpPoint);
+      }
+      else if (e.Button == MouseButtons.Middle)
         DoImageMove(mouseDownPoint, mouseUpPoint);
     }
 
@@ -151,7 +167,37 @@ namespace InvoiceEvidence
 
     private void DoImageMove(Point mouseDownPoint, Point mouseUpPoint)
     {
-      throw new NotImplementedException();
+      int widthChange = - (mouseUpPoint.X - mouseDownPoint.X);
+      int heightChange = - (mouseUpPoint.Y - mouseDownPoint.Y);
+      pnlContent.VerticalScroll.Value = EnsureBetween(
+        pnlContent.VerticalScroll.Minimum,
+        pnlContent.VerticalScroll.Value + heightChange,
+        pnlContent.VerticalScroll.Maximum);
+      pnlContent.HorizontalScroll.Value = EnsureBetween(
+        pnlContent.HorizontalScroll.Minimum,
+        pnlContent.HorizontalScroll.Value + widthChange,
+        pnlContent.HorizontalScroll.Maximum);
+
+    }
+
+    private int EnsureBetween(int minimum, int value, int maximum)
+    {
+      return Math.Max(minimum, Math.Min(value, maximum));
+    }
+
+    private void btnZoomIn_Click(object sender, EventArgs e)
+    {
+      ZoomIn();
+    }
+
+    private void btnZoomOut_Click(object sender, EventArgs e)
+    {
+      ZoomOut();
+    }
+
+    private void btnZoomFit_Click(object sender, EventArgs e)
+    {
+      ZoomFit();
     }
   }
 }

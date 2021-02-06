@@ -49,6 +49,7 @@ namespace InvoiceEvidence
     {
       splMain.Panel2.Visible = false;
       RefreshFilesList();
+      invoceDetail.RecognitionEnabled = true;
     }
 
     private void RefreshFilesList(int presetIndex = -1)

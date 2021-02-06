@@ -40,12 +40,12 @@
       this.zoomresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.zoomautoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.pnlLeft = new System.Windows.Forms.Panel();
-      this.pnlContent = new System.Windows.Forms.Panel();
-      this.btnZoomIn = new System.Windows.Forms.Button();
-      this.btnZoomOut = new System.Windows.Forms.Button();
-      this.btnZoomFit = new System.Windows.Forms.Button();
-      this.chkChecked = new System.Windows.Forms.CheckBox();
       this.btnOpenInExplorer = new System.Windows.Forms.Button();
+      this.chkRecognizeOn = new System.Windows.Forms.CheckBox();
+      this.btnZoomFit = new System.Windows.Forms.Button();
+      this.btnZoomOut = new System.Windows.Forms.Button();
+      this.btnZoomIn = new System.Windows.Forms.Button();
+      this.pnlContent = new System.Windows.Forms.Panel();
       ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
       this.cmsPic.SuspendLayout();
       this.pnlLeft.SuspendLayout();
@@ -57,7 +57,7 @@
       this.pic.ContextMenuStrip = this.cmsPic;
       this.pic.Location = new System.Drawing.Point(3, 3);
       this.pic.Name = "pic";
-      this.pic.Size = new System.Drawing.Size(732, 450);
+      this.pic.Size = new System.Drawing.Size(600, 450);
       this.pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
       this.pic.TabIndex = 0;
       this.pic.TabStop = false;
@@ -124,7 +124,7 @@
       // pnlLeft
       // 
       this.pnlLeft.Controls.Add(this.btnOpenInExplorer);
-      this.pnlLeft.Controls.Add(this.chkChecked);
+      this.pnlLeft.Controls.Add(this.chkRecognizeOn);
       this.pnlLeft.Controls.Add(this.btnZoomFit);
       this.pnlLeft.Controls.Add(this.btnZoomOut);
       this.pnlLeft.Controls.Add(this.btnZoomIn);
@@ -134,32 +134,24 @@
       this.pnlLeft.Size = new System.Drawing.Size(55, 482);
       this.pnlLeft.TabIndex = 1;
       // 
-      // pnlContent
+      // btnOpenInExplorer
       // 
-      this.pnlContent.Controls.Add(this.pic);
-      this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pnlContent.Location = new System.Drawing.Point(55, 0);
-      this.pnlContent.Name = "pnlContent";
-      this.pnlContent.Size = new System.Drawing.Size(711, 482);
-      this.pnlContent.TabIndex = 2;
+      this.btnOpenInExplorer.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenInExplorer.Image")));
+      this.btnOpenInExplorer.Location = new System.Drawing.Point(9, 202);
+      this.btnOpenInExplorer.Name = "btnOpenInExplorer";
+      this.btnOpenInExplorer.Size = new System.Drawing.Size(40, 40);
+      this.btnOpenInExplorer.TabIndex = 5;
+      this.btnOpenInExplorer.UseVisualStyleBackColor = true;
       // 
-      // btnZoomIn
+      // chkRecognizeOn
       // 
-      this.btnZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomIn.Image")));
-      this.btnZoomIn.Location = new System.Drawing.Point(9, 8);
-      this.btnZoomIn.Name = "btnZoomIn";
-      this.btnZoomIn.Size = new System.Drawing.Size(40, 40);
-      this.btnZoomIn.TabIndex = 0;
-      this.btnZoomIn.UseVisualStyleBackColor = true;
-      // 
-      // btnZoomOut
-      // 
-      this.btnZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOut.Image")));
-      this.btnZoomOut.Location = new System.Drawing.Point(9, 50);
-      this.btnZoomOut.Name = "btnZoomOut";
-      this.btnZoomOut.Size = new System.Drawing.Size(40, 40);
-      this.btnZoomOut.TabIndex = 1;
-      this.btnZoomOut.UseVisualStyleBackColor = true;
+      this.chkRecognizeOn.Appearance = System.Windows.Forms.Appearance.Button;
+      this.chkRecognizeOn.Image = ((System.Drawing.Image)(resources.GetObject("chkRecognizeOn.Image")));
+      this.chkRecognizeOn.Location = new System.Drawing.Point(9, 149);
+      this.chkRecognizeOn.Name = "chkRecognizeOn";
+      this.chkRecognizeOn.Size = new System.Drawing.Size(40, 47);
+      this.chkRecognizeOn.TabIndex = 4;
+      this.chkRecognizeOn.UseVisualStyleBackColor = true;
       // 
       // btnZoomFit
       // 
@@ -169,25 +161,37 @@
       this.btnZoomFit.Size = new System.Drawing.Size(40, 40);
       this.btnZoomFit.TabIndex = 2;
       this.btnZoomFit.UseVisualStyleBackColor = true;
+      this.btnZoomFit.Click += new System.EventHandler(this.btnZoomFit_Click);
       // 
-      // chkChecked
+      // btnZoomOut
       // 
-      this.chkChecked.Appearance = System.Windows.Forms.Appearance.Button;
-      this.chkChecked.Image = ((System.Drawing.Image)(resources.GetObject("chkChecked.Image")));
-      this.chkChecked.Location = new System.Drawing.Point(9, 149);
-      this.chkChecked.Name = "chkChecked";
-      this.chkChecked.Size = new System.Drawing.Size(40, 47);
-      this.chkChecked.TabIndex = 4;
-      this.chkChecked.UseVisualStyleBackColor = true;
+      this.btnZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOut.Image")));
+      this.btnZoomOut.Location = new System.Drawing.Point(9, 50);
+      this.btnZoomOut.Name = "btnZoomOut";
+      this.btnZoomOut.Size = new System.Drawing.Size(40, 40);
+      this.btnZoomOut.TabIndex = 1;
+      this.btnZoomOut.UseVisualStyleBackColor = true;
+      this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
       // 
-      // btnOpenInExplorer
+      // btnZoomIn
       // 
-      this.btnOpenInExplorer.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenInExplorer.Image")));
-      this.btnOpenInExplorer.Location = new System.Drawing.Point(9, 202);
-      this.btnOpenInExplorer.Name = "btnOpenInExplorer";
-      this.btnOpenInExplorer.Size = new System.Drawing.Size(40, 40);
-      this.btnOpenInExplorer.TabIndex = 5;
-      this.btnOpenInExplorer.UseVisualStyleBackColor = true;
+      this.btnZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomIn.Image")));
+      this.btnZoomIn.Location = new System.Drawing.Point(9, 8);
+      this.btnZoomIn.Name = "btnZoomIn";
+      this.btnZoomIn.Size = new System.Drawing.Size(40, 40);
+      this.btnZoomIn.TabIndex = 0;
+      this.btnZoomIn.UseVisualStyleBackColor = true;
+      this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+      // 
+      // pnlContent
+      // 
+      this.pnlContent.AutoScroll = true;
+      this.pnlContent.Controls.Add(this.pic);
+      this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pnlContent.Location = new System.Drawing.Point(55, 0);
+      this.pnlContent.Name = "pnlContent";
+      this.pnlContent.Size = new System.Drawing.Size(711, 482);
+      this.pnlContent.TabIndex = 2;
       // 
       // InvoiceImage
       // 
@@ -223,7 +227,7 @@
     private System.Windows.Forms.Button btnZoomOut;
     private System.Windows.Forms.Button btnZoomIn;
     private System.Windows.Forms.Panel pnlContent;
-    private System.Windows.Forms.CheckBox chkChecked;
+    private System.Windows.Forms.CheckBox chkRecognizeOn;
     private System.Windows.Forms.Button btnOpenInExplorer;
   }
 }
