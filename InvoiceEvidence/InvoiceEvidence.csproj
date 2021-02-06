@@ -65,6 +65,9 @@
     <Compile Include="Controls\InvoiceRow.Designer.cs">
       <DependentUpon>InvoiceRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VerticalFlowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

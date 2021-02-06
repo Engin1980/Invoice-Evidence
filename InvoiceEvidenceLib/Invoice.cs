@@ -15,6 +15,11 @@ namespace InvoiceEvidenceLib
     public BindingList<InvoiceItem> Items { get; set; } = new BindingList<InvoiceItem>();
     public string Comment { get; set; }
 
+    public double TotalPrice
+    {
+      get => Items.Sum(q => q.Amount);
+    }
+
     public string ItemsOverview
     {
       get => string.Join("; ", Items.Select(q => q.Label));
