@@ -31,11 +31,11 @@
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceRow));
       this.lblShop = new System.Windows.Forms.Label();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.lblDate = new System.Windows.Forms.Label();
       this.lblNumber = new System.Windows.Forms.Label();
       this.btnView = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
-      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       this.SuspendLayout();
       // 
@@ -48,6 +48,10 @@
       this.lblShop.Size = new System.Drawing.Size(44, 17);
       this.lblShop.TabIndex = 0;
       this.lblShop.Text = "Shop";
+      // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
       // 
       // lblDate
       // 
@@ -79,6 +83,7 @@
       this.btnView.Size = new System.Drawing.Size(48, 48);
       this.btnView.TabIndex = 6;
       this.btnView.UseVisualStyleBackColor = true;
+      this.btnView.Click += new System.EventHandler(this.btnView_Click);
       // 
       // label1
       // 
@@ -91,10 +96,6 @@
       this.label1.Size = new System.Drawing.Size(603, 56);
       this.label1.TabIndex = 7;
       this.label1.Text = "-";
-      // 
-      // invoiceBindingSource
-      // 
-      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
       // 
       // InvoiceRow
       // 

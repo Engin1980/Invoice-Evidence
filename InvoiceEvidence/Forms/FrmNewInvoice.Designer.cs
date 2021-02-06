@@ -33,7 +33,7 @@
       this.lstFiles = new System.Windows.Forms.ListBox();
       this.pnlImage = new System.Windows.Forms.Panel();
       this.pnlFill = new System.Windows.Forms.Panel();
-      this.invoceDetail = new InvoiceEvidence.Controls.InoviceDetail();
+      this.invoceDetail = new InvoiceEvidence.Controls.InvoiceDetail();
       this.pnlBottom = new System.Windows.Forms.Panel();
       this.btnSave = new System.Windows.Forms.Button();
       this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -171,7 +171,7 @@
     private System.Windows.Forms.Panel pnlImage;
     private System.Windows.Forms.BindingSource itemsBindingSource;
     private System.Windows.Forms.Panel pnlFill;
-    private Controls.InoviceDetail invoceDetail;
+    private Controls.InvoiceDetail invoceDetail;
     private System.Windows.Forms.Panel pnlBottom;
     private System.Windows.Forms.Button btnSave;
   }

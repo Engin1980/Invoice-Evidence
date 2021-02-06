@@ -1,6 +1,6 @@
 ﻿namespace InvoiceEvidence.Controls
 {
-  partial class InoviceDetail
+  partial class InvoiceDetail
   {
     /// <summary> 
     /// Required designer variable.

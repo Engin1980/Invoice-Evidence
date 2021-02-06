@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace InvoiceEvidence.Controls
 {
-  public partial class InoviceDetail : UserControl
+  public partial class InvoiceDetail : UserControl
   {
     public bool RecognitionEnabled
     {
@@ -78,7 +78,7 @@ namespace InvoiceEvidence.Controls
       return ret;
     }
 
-    public InoviceDetail()
+    public InvoiceDetail()
     {
       InitializeComponent();
       picInvoice.BlockTextRecognized += PicInvoice_BlockTextRecognized;

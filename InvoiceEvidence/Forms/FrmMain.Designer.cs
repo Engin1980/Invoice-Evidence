@@ -30,6 +30,7 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
       this.panel1 = new System.Windows.Forms.Panel();
+      this.chkColorize = new System.Windows.Forms.CheckBox();
       this.label2 = new System.Windows.Forms.Label();
       this.txtQuickFilter = new System.Windows.Forms.TextBox();
       this.cmbOrderBy = new System.Windows.Forms.ComboBox();
@@ -39,7 +40,6 @@
       this.btnAnalyseNewFiles = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
       this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
-      this.chkColorize = new System.Windows.Forms.CheckBox();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -59,6 +59,20 @@
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(1109, 71);
       this.panel1.TabIndex = 1;
+      // 
+      // chkColorize
+      // 
+      this.chkColorize.Anchor = System.Windows.Forms.AnchorStyles.Top;
+      this.chkColorize.Appearance = System.Windows.Forms.Appearance.Button;
+      this.chkColorize.Checked = true;
+      this.chkColorize.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.chkColorize.Image = ((System.Drawing.Image)(resources.GetObject("chkColorize.Image")));
+      this.chkColorize.Location = new System.Drawing.Point(705, 12);
+      this.chkColorize.Name = "chkColorize";
+      this.chkColorize.Size = new System.Drawing.Size(48, 48);
+      this.chkColorize.TabIndex = 8;
+      this.chkColorize.UseVisualStyleBackColor = true;
+      this.chkColorize.CheckedChanged += new System.EventHandler(this.chkColorize_CheckedChanged);
       // 
       // label2
       // 
@@ -155,18 +169,6 @@
       this.pnlItems.Name = "pnlItems";
       this.pnlItems.Size = new System.Drawing.Size(1109, 510);
       this.pnlItems.TabIndex = 2;
-      // 
-      // chkColorize
-      // 
-      this.chkColorize.Anchor = System.Windows.Forms.AnchorStyles.Top;
-      this.chkColorize.Appearance = System.Windows.Forms.Appearance.Button;
-      this.chkColorize.Image = ((System.Drawing.Image)(resources.GetObject("chkColorize.Image")));
-      this.chkColorize.Location = new System.Drawing.Point(705, 12);
-      this.chkColorize.Name = "chkColorize";
-      this.chkColorize.Size = new System.Drawing.Size(48, 48);
-      this.chkColorize.TabIndex = 8;
-      this.chkColorize.UseVisualStyleBackColor = true;
-      this.chkColorize.CheckedChanged += new System.EventHandler(this.chkColorize_CheckedChanged);
       // 
       // FrmMain
       // 

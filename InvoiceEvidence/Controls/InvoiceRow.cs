@@ -5,6 +5,9 @@ namespace InvoiceEvidence
 {
   public partial class InvoiceRow : UserControl
   {
+    public delegate void ViewButtonClickedDelegate(InvoiceRow sender);
+    public event ViewButtonClickedDelegate ViewButtonClicked;
+
     public InvoiceRow()
     {
       InitializeComponent();
@@ -19,6 +22,11 @@ namespace InvoiceEvidence
         _Invoice = value;
         invoiceBindingSource.DataSource = value;
       }
+    }
+
+    private void btnView_Click(object sender, System.EventArgs e)
+    {
+      ViewButtonClicked?.Invoke(this);
     }
   }
 }

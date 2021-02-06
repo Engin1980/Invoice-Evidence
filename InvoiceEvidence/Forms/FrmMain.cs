@@ -1,4 +1,5 @@
-﻿using InvoiceEvidenceLib;
+﻿using InvoiceEvidence.Forms;
+using InvoiceEvidenceLib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,8 +33,9 @@ namespace InvoiceEvidence
       {
         InvoiceRow row = new InvoiceRow()
         {
-          Invoice = invoice
+          Invoice = invoice,          
         };
+        row.ViewButtonClicked += Row_ViewButtonClicked;
         row.Width = pnlItems.Width - VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH;
         row.BorderStyle = BorderStyle.FixedSingle;
         if (chkColorize.Checked)
@@ -41,6 +43,14 @@ namespace InvoiceEvidence
         pnlItems.Controls.Add(row);
 
       }
+    }
+
+    private void Row_ViewButtonClicked(InvoiceRow sender)
+    {
+      FrmDetail frm = new FrmDetail();
+      frm.Invoice = sender.Invoice;
+      frm.ShowDialog();
+      RefreshView();
     }
 
     private Color GetBackColorForInvoice(Invoice invoice)
@@ -62,12 +72,7 @@ namespace InvoiceEvidence
       string quickQuery = txtQuickFilter.Text.Trim();
       if (quickQuery.Length > 0)
       {
-        ret = Program.Invoices.Where(q =>
-             q.Keywords.ToLower().Contains(quickQuery)
-          || q.ItemsOverview.ToLower().Contains(quickQuery)
-          || q.Number.ToLower().Contains(quickQuery)
-          || q.OrderNumber.ToLower().Contains(quickQuery)
-          || q.ShopName.ToLower().Contains(quickQuery));
+        ret = Program.Invoices.Where(q => IsQuickQueryMatch(q, quickQuery));
       }
       else
       {
@@ -94,6 +99,22 @@ namespace InvoiceEvidence
       }
 
       return ret.ToList();
+    }
+
+    private bool IsQuickQueryMatch(Invoice q, string pattern)
+    {
+      bool ret = IsQuickStringMatch(pattern, q.Keywords)
+        || IsQuickStringMatch(pattern, q.ItemsOverview)
+        || IsQuickStringMatch(pattern, q.Number)
+        || IsQuickStringMatch(pattern, q.OrderNumber)
+        || IsQuickStringMatch(pattern, q.ShopName);
+
+      return ret;
+    }
+
+    private bool IsQuickStringMatch(string pattern, string content)
+    {
+      return content != null && content.ToLower().Contains(pattern);
     }
 
     private void btnChangeFolder_Click(object sender, EventArgs e)
@@ -149,11 +170,9 @@ namespace InvoiceEvidence
     {
       string tmpFile = Path.GetTempFileName();
 
-      using (StreamWriter wrt = new StreamWriter(File.Open(tmpFile, FileMode.Create)))
-      {
-        JsonSerializer ser = new JsonSerializer();
-        ser.Serialize(wrt, Program.Invoices);
-      }
+      string jsonText = JsonConvert.SerializeObject(Program.Invoices, Formatting.Indented);
+
+      System.IO.File.WriteAllText(tmpFile, jsonText);
 
       File.Copy(tmpFile, Program.DbFile, true);
 
@@ -162,6 +181,7 @@ namespace InvoiceEvidence
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
+      cmbOrderBy.SelectedIndex = 0;
       ReloadDatabase();
     }
 
