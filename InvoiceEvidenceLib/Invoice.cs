@@ -31,13 +31,10 @@ namespace InvoiceEvidenceLib
 
     }
 
-    public Invoice(string fileName, int presetItemsCount)
+    public Invoice(string fileName, int presetItemsCount = 7)
     {
       FileName = fileName;
-      for (int i = 0; i < presetItemsCount; i++)
-      {
-        Items.Add(new InvoiceItem());
-      }
+      this.AppendEmptyItems(presetItemsCount);
     }
 
     public void DiscardEmptyItems()
@@ -47,6 +44,12 @@ namespace InvoiceEvidenceLib
                     string.IsNullOrWhiteSpace(q.Keywords) &&
                     q.Amount == 0).ToList();
       toDel.ForEach(q => Items.Remove(q));
+    }
+
+    public void AppendEmptyItems(int count = 7)
+    {
+      while (Items.Count < count)
+        Items.Add(new InvoiceItem());
     }
   }
 }

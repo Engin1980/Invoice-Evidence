@@ -1,12 +1,4 @@
 ﻿using InvoiceEvidenceLib;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InvoiceEvidence.Forms
@@ -20,8 +12,18 @@ namespace InvoiceEvidence.Forms
 
     public Invoice Invoice
     {
-      get => this.invoiceDetail.Invoice;
-      set => this.invoiceDetail.Invoice = value;
+      get => invoiceDetail.Invoice;
+      set
+      {
+        value.AppendEmptyItems();
+        invoiceDetail.Invoice = value;
+      }
+
+    }
+
+    private void FrmDetail_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      this.Invoice.DiscardEmptyItems();
     }
   }
 }

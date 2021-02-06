@@ -51,6 +51,7 @@
       this.Controls.Add(this.invoiceDetail);
       this.Name = "FrmDetail";
       this.Text = "FrmDetail";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDetail_FormClosed);
       this.ResumeLayout(false);
 
     }
