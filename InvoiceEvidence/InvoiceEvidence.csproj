@@ -53,46 +53,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoiceRow.cs">
+    <Compile Include="Controls\InoviceDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InvoiceRow.Designer.cs">
+    <Compile Include="Controls\InoviceDetail.Designer.cs">
+      <DependentUpon>InoviceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceRow.Designer.cs">
       <DependentUpon>InvoiceRow.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
+    <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNewInvoice.cs">
+    <Compile Include="Forms\FrmNewInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNewInvoice.Designer.cs">
+    <Compile Include="Forms\FrmNewInvoice.Designer.cs">
       <DependentUpon>FrmNewInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceImage.cs">
+    <Compile Include="Controls\InvoiceImage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InvoiceImage.Designer.cs">
+    <Compile Include="Controls\InvoiceImage.Designer.cs">
       <DependentUpon>InvoiceImage.cs</DependentUpon>
     </Compile>
     <Compile Include="OCR\IOCR.cs" />
     <Compile Include="OCR\TesseractOCR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InvoiceRow.resx">
+    <EmbeddedResource Include="Controls\InoviceDetail.resx">
+      <DependentUpon>InoviceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceRow.resx">
       <DependentUpon>InvoiceRow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
+    <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNewInvoice.resx">
+    <EmbeddedResource Include="Forms\FrmNewInvoice.resx">
       <DependentUpon>FrmNewInvoice.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="InvoiceImage.resx">
+    <EmbeddedResource Include="Controls\InvoiceImage.resx">
       <DependentUpon>InvoiceImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,9 +139,14 @@
   <ItemGroup>
     <Content Include="icons\box.png" />
     <Content Include="icons\folder.png" />
+    <Content Include="icons\letter.png" />
+    <Content Include="icons\open.png" />
     <Content Include="icons\reload.png" />
     <Content Include="icons\save.png" />
     <Content Include="icons\search.png" />
+    <Content Include="icons\zoomfit.png" />
+    <Content Include="icons\zoomin.png" />
+    <Content Include="icons\zoomout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
