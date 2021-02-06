@@ -1,4 +1,4 @@
-﻿namespace InvoiceEvidence
+﻿namespace InvoiceEvidence.Forms
 {
   partial class FrmMain
   {
@@ -40,11 +40,13 @@
       this.btnAnalyseNewFiles = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
       this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
+      this.btnSettings = new System.Windows.Forms.Button();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.btnSettings);
       this.panel1.Controls.Add(this.chkColorize);
       this.panel1.Controls.Add(this.label2);
       this.panel1.Controls.Add(this.txtQuickFilter);
@@ -170,6 +172,16 @@
       this.pnlItems.Size = new System.Drawing.Size(1109, 510);
       this.pnlItems.TabIndex = 2;
       // 
+      // btnSettings
+      // 
+      this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+      this.btnSettings.Location = new System.Drawing.Point(316, 12);
+      this.btnSettings.Name = "btnSettings";
+      this.btnSettings.Size = new System.Drawing.Size(48, 48);
+      this.btnSettings.TabIndex = 9;
+      this.btnSettings.UseVisualStyleBackColor = true;
+      this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -202,6 +214,7 @@
     private System.Windows.Forms.ComboBox cmbOrderBy;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.CheckBox chkColorize;
+    private System.Windows.Forms.Button btnSettings;
   }
 }
 

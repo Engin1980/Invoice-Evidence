@@ -1,4 +1,4 @@
-﻿namespace InvoiceEvidence
+﻿namespace InvoiceEvidence.Controls
 {
   partial class InvoiceRow
   {

@@ -54,7 +54,7 @@
       this.keywordsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.pnlFill = new System.Windows.Forms.Panel();
-      this.picInvoice = new InvoiceEvidence.InvoiceImage();
+      this.picInvoice = new InvoiceEvidence.Controls.InvoiceImage();
       this.pnlData.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
       this.splitContainer2.Panel1.SuspendLayout();

@@ -1,7 +1,33 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InvoiceEvidence.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TesseractDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tesseract-master.1153</Value>
+    </Setting>
+    <Setting Name="TesseractLanguages" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ces+eng</Value>
+    </Setting>
+    <Setting Name="MainFormVerticalScrollbarPlaceholderWith" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">32</Value>
+    </Setting>
+    <Setting Name="InvoiceNewBackColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="InvoiceOldBackColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">200, 100, 100</Value>
+    </Setting>
+    <Setting Name="InvoiceOldDaysCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">730</Value>
+    </Setting>
+    <Setting Name="InvoiceNewDaysCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+    <Setting Name="TesseractTemporalDirectory" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Temp</Value>
+    </Setting>
+    <Setting Name="bubla" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sfae</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

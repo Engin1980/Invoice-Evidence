@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +51,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>InvoiceEvidence.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -92,9 +110,16 @@
     <Compile Include="Controls\InvoiceImage.Designer.cs">
       <DependentUpon>InvoiceImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="OCR\IOCR.cs" />
     <Compile Include="OCR\TesseractOCR.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SettingsPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\InvoiceDetail.resx">
       <DependentUpon>InvoiceDetail.cs</DependentUpon>
@@ -116,6 +141,9 @@
     <EmbeddedResource Include="Controls\InvoiceImage.resx">
       <DependentUpon>InvoiceImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -128,7 +156,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="config.ini" />
     <None Include="packages.config" />
     <None Include="postBuild\postBuild.ps1" />
     <None Include="Properties\DataSources\InvoceEvidenceLib.Invoce.datasource" />
@@ -150,15 +177,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons\box.png" />
+    <Content Include="icons\colors.png" />
+    <Content Include="icons\filter.png" />
     <Content Include="icons\folder.png" />
     <Content Include="icons\letter.png" />
     <Content Include="icons\open.png" />
+    <Content Include="icons\recognize.png" />
     <Content Include="icons\reload.png" />
     <Content Include="icons\save.png" />
     <Content Include="icons\search.png" />
+    <Content Include="icons\search1.png" />
+    <Content Include="icons\search2.png" />
+    <Content Include="icons\settings.png" />
+    <Content Include="icons\trash.png" />
     <Content Include="icons\zoomfit.png" />
     <Content Include="icons\zoomin.png" />
     <Content Include="icons\zoomout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

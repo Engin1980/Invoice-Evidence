@@ -22,5 +22,110 @@ namespace InvoiceEvidence.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tesseract-master.1153")]
+        public string TesseractDirectory {
+            get {
+                return ((string)(this["TesseractDirectory"]));
+            }
+            set {
+                this["TesseractDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ces+eng")]
+        public string TesseractLanguages {
+            get {
+                return ((string)(this["TesseractLanguages"]));
+            }
+            set {
+                this["TesseractLanguages"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("32")]
+        public int MainFormVerticalScrollbarPlaceholderWith {
+            get {
+                return ((int)(this["MainFormVerticalScrollbarPlaceholderWith"]));
+            }
+            set {
+                this["MainFormVerticalScrollbarPlaceholderWith"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color InvoiceNewBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["InvoiceNewBackColor"]));
+            }
+            set {
+                this["InvoiceNewBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200, 100, 100")]
+        public global::System.Drawing.Color InvoiceOldBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["InvoiceOldBackColor"]));
+            }
+            set {
+                this["InvoiceOldBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("730")]
+        public int InvoiceOldDaysCount {
+            get {
+                return ((int)(this["InvoiceOldDaysCount"]));
+            }
+            set {
+                this["InvoiceOldDaysCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public int InvoiceNewDaysCount {
+            get {
+                return ((int)(this["InvoiceNewDaysCount"]));
+            }
+            set {
+                this["InvoiceNewDaysCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp")]
+        public string TesseractTemporalDirectory {
+            get {
+                return ((string)(this["TesseractTemporalDirectory"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sfae")]
+        public string bubla {
+            get {
+                return ((string)(this["bubla"]));
+            }
+            set {
+                this["bubla"] = value;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using InvoiceEvidence.Forms;
+﻿using InvoiceEvidence.Controls;
+using InvoiceEvidence.Forms;
 using InvoiceEvidenceLib;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace InvoiceEvidence
+namespace InvoiceEvidence.Forms
 {
   public partial class FrmMain : Form
   {
@@ -33,7 +34,7 @@ namespace InvoiceEvidence
       {
         InvoiceRow row = new InvoiceRow()
         {
-          Invoice = invoice,          
+          Invoice = invoice,
         };
         row.ViewButtonClicked += Row_ViewButtonClicked;
         row.Width = pnlItems.Width - VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH;
@@ -47,8 +48,10 @@ namespace InvoiceEvidence
 
     private void Row_ViewButtonClicked(InvoiceRow sender)
     {
-      FrmDetail frm = new FrmDetail();
-      frm.Invoice = sender.Invoice;
+      FrmDetail frm = new FrmDetail
+      {
+        Invoice = sender.Invoice
+      };
       frm.ShowDialog();
       RefreshView();
     }
@@ -56,13 +59,13 @@ namespace InvoiceEvidence
     private Color GetBackColorForInvoice(Invoice invoice)
     {
       TimeSpan ts = DateTime.Now - invoice.Date;
-      if (ts.TotalDays > (365 * 2))
+      if (ts.TotalDays > Properties.Settings.Default.InvoiceOldDaysCount)
         // old ones
-        return System.Drawing.Color.FromArgb(200, 100, 100);
-      else if (ts.TotalDays < 14)
-        return Color.White;
+        return Properties.Settings.Default.InvoiceOldBackColor;
+      else if (ts.TotalDays < Properties.Settings.Default.InvoiceNewDaysCount)
+        return Properties.Settings.Default.InvoiceNewBackColor;
       else
-        return System.Drawing.SystemColors.Control;
+        return SystemColors.Control;
     }
 
     private List<Invoice> GetOrderedAndFilteredInvoices()
@@ -203,11 +206,16 @@ namespace InvoiceEvidence
       }
     }
 
-    private const int VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH = 32;
+    private static readonly int VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH = Properties.Settings.Default.MainFormVerticalScrollbarPlaceholderWith;
 
     private void chkColorize_CheckedChanged(object sender, EventArgs e)
     {
       RefreshView();
+    }
+
+    private void btnSettings_Click(object sender, EventArgs e)
+    {
+      new FrmSettings().ShowDialog();
     }
   }
 }

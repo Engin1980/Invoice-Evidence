@@ -2,12 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace InvoiceEvidence
+namespace InvoiceEvidence.Forms
 {
   public partial class FrmNewInvoice : Form
   {
@@ -29,12 +28,13 @@ namespace InvoiceEvidence
         if (value == null)
         {
           splMain.Panel2.Visible = false;
-        } else
+        }
+        else
         {
           splMain.Panel2.Visible = true;
           invoceDetail.Invoice = value.Value;
         }
-        
+
       }
     }
 
@@ -76,7 +76,7 @@ namespace InvoiceEvidence
       }
       else
       {
-        Item = lstFiles.SelectedItem as ListBoxItem;      
+        Item = lstFiles.SelectedItem as ListBoxItem;
       }
     }
 

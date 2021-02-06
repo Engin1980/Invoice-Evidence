@@ -1,4 +1,4 @@
-﻿namespace InvoiceEvidence
+﻿namespace InvoiceEvidence.Forms
 {
   partial class FrmNewInvoice
   {

@@ -1,7 +1,7 @@
 ﻿using InvoiceEvidenceLib;
 using System.Windows.Forms;
 
-namespace InvoiceEvidence
+namespace InvoiceEvidence.Controls
 {
   public partial class InvoiceRow : UserControl
   {
