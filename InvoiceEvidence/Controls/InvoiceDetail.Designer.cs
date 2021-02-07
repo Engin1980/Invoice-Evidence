@@ -49,12 +49,12 @@
       this.label1 = new System.Windows.Forms.Label();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.keywordsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.pnlFill = new System.Windows.Forms.Panel();
       this.picInvoice = new InvoiceEvidence.Controls.InvoiceImage();
+      this.labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.keywordsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pnlData.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
       this.splitContainer2.Panel1.SuspendLayout();
@@ -280,7 +280,7 @@
       this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox1.Size = new System.Drawing.Size(737, 211);
+      this.groupBox1.Size = new System.Drawing.Size(735, 211);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Invoice items:";
@@ -302,31 +302,9 @@
       this.dataGridView1.Location = new System.Drawing.Point(9, 24);
       this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
       this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.Size = new System.Drawing.Size(720, 178);
+      this.dataGridView1.Size = new System.Drawing.Size(718, 178);
       this.dataGridView1.TabIndex = 0;
       this.dataGridView1.Enter += new System.EventHandler(this.ctr_Enter);
-      // 
-      // labelDataGridViewTextBoxColumn
-      // 
-      this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-      this.labelDataGridViewTextBoxColumn.HeaderText = "Label";
-      this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
-      this.labelDataGridViewTextBoxColumn.Width = 250;
-      // 
-      // amountDataGridViewTextBoxColumn
-      // 
-      this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-      dataGridViewCellStyle1.Format = "N2";
-      this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-      this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-      this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-      // 
-      // keywordsDataGridViewTextBoxColumn
-      // 
-      this.keywordsDataGridViewTextBoxColumn.DataPropertyName = "Keywords";
-      this.keywordsDataGridViewTextBoxColumn.HeaderText = "Keywords";
-      this.keywordsDataGridViewTextBoxColumn.Name = "keywordsDataGridViewTextBoxColumn";
-      this.keywordsDataGridViewTextBoxColumn.Width = 500;
       // 
       // itemsBindingSource
       // 
@@ -353,7 +331,29 @@
       this.picInvoice.Size = new System.Drawing.Size(1129, 428);
       this.picInvoice.TabIndex = 0;
       // 
-      // InoviceDetail
+      // labelDataGridViewTextBoxColumn
+      // 
+      this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
+      this.labelDataGridViewTextBoxColumn.HeaderText = "Label";
+      this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
+      this.labelDataGridViewTextBoxColumn.Width = 500;
+      // 
+      // amountDataGridViewTextBoxColumn
+      // 
+      this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+      dataGridViewCellStyle1.Format = "N2";
+      this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+      this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+      // 
+      // keywordsDataGridViewTextBoxColumn
+      // 
+      this.keywordsDataGridViewTextBoxColumn.DataPropertyName = "Keywords";
+      this.keywordsDataGridViewTextBoxColumn.HeaderText = "Keywords";
+      this.keywordsDataGridViewTextBoxColumn.Name = "keywordsDataGridViewTextBoxColumn";
+      this.keywordsDataGridViewTextBoxColumn.Width = 500;
+      // 
+      // InvoiceDetail
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -361,7 +361,7 @@
       this.Controls.Add(this.pnlData);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "InoviceDetail";
+      this.Name = "InvoiceDetail";
       this.Size = new System.Drawing.Size(1129, 650);
       this.Load += new System.EventHandler(this.InoviceDetail_Load);
       this.pnlData.ResumeLayout(false);
@@ -402,9 +402,9 @@
     private System.Windows.Forms.Panel pnlFill;
     private InvoiceImage picInvoice;
     private System.Windows.Forms.BindingSource invoiceBindingSource;
+    private System.Windows.Forms.BindingSource itemsBindingSource;
     private System.Windows.Forms.DataGridViewTextBoxColumn labelDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn keywordsDataGridViewTextBoxColumn;
-    private System.Windows.Forms.BindingSource itemsBindingSource;
   }
 }
