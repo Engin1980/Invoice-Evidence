@@ -89,7 +89,7 @@
       // 
       // chkColorize
       // 
-      this.chkColorize.Anchor = System.Windows.Forms.AnchorStyles.Top;
+      this.chkColorize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.chkColorize.Appearance = System.Windows.Forms.Appearance.Button;
       this.chkColorize.Checked = true;
       this.chkColorize.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -226,6 +226,7 @@
       this.grdItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.grdItems.Size = new System.Drawing.Size(828, 428);
       this.grdItems.TabIndex = 3;
+      this.grdItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdItems_CellDoubleClick);
       this.grdItems.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdItems_DataBindingComplete);
       // 
       // invoiceBindingSource

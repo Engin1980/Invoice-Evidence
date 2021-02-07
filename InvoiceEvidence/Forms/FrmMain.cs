@@ -254,5 +254,16 @@ namespace InvoiceEvidence.Forms
         grdItems.Rows[i].DefaultCellStyle.BackColor = c;
       }
     }
+
+    private void grdItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+      Invoice invoice = visibleInvoices[e.RowIndex];
+      FrmDetail frm = new FrmDetail
+      {
+        Invoice = invoice
+      };
+      frm.ShowDialog();
+      RefreshView();
+    }
   }
 }

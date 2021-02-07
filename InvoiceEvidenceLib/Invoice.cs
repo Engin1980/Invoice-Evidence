@@ -11,7 +11,8 @@ namespace InvoiceEvidenceLib
     public string Number { get; set; }
     public string OrderNumber { get; set; }
     public string Keywords { get; set; }
-    public DateTime Date { get; set; }
+    private DateTime _Date;
+    public DateTime Date { get => _Date; set => _Date = value.Date; }
     public BindingList<InvoiceItem> Items { get; set; } = new BindingList<InvoiceItem>();
     public string Comment { get; set; }
 
@@ -34,7 +35,7 @@ namespace InvoiceEvidenceLib
     public Invoice(string fileName, int presetItemsCount = 7)
     {
       FileName = fileName;
-      this.AppendEmptyItems(presetItemsCount);
+      AppendEmptyItems(presetItemsCount);
     }
 
     public void DiscardEmptyItems()
