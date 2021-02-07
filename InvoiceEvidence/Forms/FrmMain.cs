@@ -16,6 +16,8 @@ namespace InvoiceEvidence.Forms
     public FrmMain()
     {
       InitializeComponent();
+      pnlItems.Dock = DockStyle.Fill;
+      grdItems.Dock = DockStyle.Fill;
     }
 
     private void btnAnalyseNewFiles_Click(object sender, EventArgs e)
@@ -26,11 +28,35 @@ namespace InvoiceEvidence.Forms
 
     private void RefreshView()
     {
+      if (Properties.Settings.Default.MainFormExtendedView)
+      {
+        grdItems.Visible = false;
+        pnlItems.Visible = true;
+        RefreshViewViaUserControl();
+      }
+      else
+      {
+        grdItems.Visible = true;
+        pnlItems.Visible = false;
+        RefreshViewViaDataGridView();
+      }
+    }
+
+    List<Invoice> visibleInvoices;
+
+    private void RefreshViewViaDataGridView()
+    {
+      visibleInvoices = GetOrderedAndFilteredInvoices();
+      grdItems.DataSource = visibleInvoices;
+    }
+
+    private void RefreshViewViaUserControl()
+    {
       pnlItems.Controls.Clear();
 
-      List<Invoice> invoices = GetOrderedAndFilteredInvoices();
+      visibleInvoices = GetOrderedAndFilteredInvoices();
 
-      foreach (var invoice in invoices)
+      foreach (var invoice in visibleInvoices)
       {
         InvoiceRow row = new InvoiceRow()
         {
@@ -216,6 +242,17 @@ namespace InvoiceEvidence.Forms
     private void btnSettings_Click(object sender, EventArgs e)
     {
       new FrmSettings().ShowDialog();
+    }
+
+    private void grdItems_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+    {
+      if (chkColorize.Checked == false || visibleInvoices == null) return;
+
+      for (int i = 0; i < visibleInvoices.Count; i++)
+      {
+        Color c = GetBackColorForInvoice(visibleInvoices[i]);
+        grdItems.Rows[i].DefaultCellStyle.BackColor = c;
+      }
     }
   }
 }

@@ -28,8 +28,12 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.btnSettings = new System.Windows.Forms.Button();
       this.chkColorize = new System.Windows.Forms.CheckBox();
       this.label2 = new System.Windows.Forms.Label();
       this.txtQuickFilter = new System.Windows.Forms.TextBox();
@@ -39,9 +43,20 @@
       this.btnChangeFolder = new System.Windows.Forms.Button();
       this.btnAnalyseNewFiles = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
+      this.pnlFill = new System.Windows.Forms.Panel();
+      this.grdItems = new System.Windows.Forms.DataGridView();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.shopNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.orderNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.itemsOverviewDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
-      this.btnSettings = new System.Windows.Forms.Button();
       this.panel1.SuspendLayout();
+      this.pnlFill.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdItems)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       this.SuspendLayout();
       // 
       // panel1
@@ -61,6 +76,16 @@
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(1109, 71);
       this.panel1.TabIndex = 1;
+      // 
+      // btnSettings
+      // 
+      this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+      this.btnSettings.Location = new System.Drawing.Point(316, 12);
+      this.btnSettings.Name = "btnSettings";
+      this.btnSettings.Size = new System.Drawing.Size(48, 48);
+      this.btnSettings.TabIndex = 9;
+      this.btnSettings.UseVisualStyleBackColor = true;
+      this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
       // 
       // chkColorize
       // 
@@ -162,32 +187,123 @@
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
+      // pnlFill
+      // 
+      this.pnlFill.Controls.Add(this.grdItems);
+      this.pnlFill.Controls.Add(this.pnlItems);
+      this.pnlFill.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pnlFill.Location = new System.Drawing.Point(0, 71);
+      this.pnlFill.Name = "pnlFill";
+      this.pnlFill.Size = new System.Drawing.Size(1109, 510);
+      this.pnlFill.TabIndex = 3;
+      // 
+      // grdItems
+      // 
+      this.grdItems.AllowUserToAddRows = false;
+      this.grdItems.AllowUserToDeleteRows = false;
+      this.grdItems.AutoGenerateColumns = false;
+      this.grdItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.grdItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateDataGridViewTextBoxColumn,
+            this.numberDataGridViewTextBoxColumn,
+            this.shopNameDataGridViewTextBoxColumn,
+            this.orderNumberDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn,
+            this.itemsOverviewDataGridViewTextBoxColumn});
+      this.grdItems.DataSource = this.invoiceBindingSource;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4, 4, 2, 2);
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.grdItems.DefaultCellStyle = dataGridViewCellStyle2;
+      this.grdItems.Location = new System.Drawing.Point(254, 22);
+      this.grdItems.Name = "grdItems";
+      this.grdItems.ReadOnly = true;
+      this.grdItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.grdItems.Size = new System.Drawing.Size(828, 428);
+      this.grdItems.TabIndex = 3;
+      this.grdItems.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdItems_DataBindingComplete);
+      // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
+      // 
+      // dateDataGridViewTextBoxColumn
+      // 
+      this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+      this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+      this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+      this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+      this.dateDataGridViewTextBoxColumn.Width = 75;
+      // 
+      // numberDataGridViewTextBoxColumn
+      // 
+      this.numberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
+      this.numberDataGridViewTextBoxColumn.HeaderText = "Number";
+      this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+      this.numberDataGridViewTextBoxColumn.ReadOnly = true;
+      this.numberDataGridViewTextBoxColumn.Width = 92;
+      // 
+      // shopNameDataGridViewTextBoxColumn
+      // 
+      this.shopNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.shopNameDataGridViewTextBoxColumn.DataPropertyName = "ShopName";
+      this.shopNameDataGridViewTextBoxColumn.HeaderText = "ShopName";
+      this.shopNameDataGridViewTextBoxColumn.Name = "shopNameDataGridViewTextBoxColumn";
+      this.shopNameDataGridViewTextBoxColumn.ReadOnly = true;
+      this.shopNameDataGridViewTextBoxColumn.Width = 110;
+      // 
+      // orderNumberDataGridViewTextBoxColumn
+      // 
+      this.orderNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.orderNumberDataGridViewTextBoxColumn.DataPropertyName = "OrderNumber";
+      this.orderNumberDataGridViewTextBoxColumn.HeaderText = "OrderNumber";
+      this.orderNumberDataGridViewTextBoxColumn.Name = "orderNumberDataGridViewTextBoxColumn";
+      this.orderNumberDataGridViewTextBoxColumn.ReadOnly = true;
+      this.orderNumberDataGridViewTextBoxColumn.Width = 137;
+      // 
+      // totalPriceDataGridViewTextBoxColumn
+      // 
+      this.totalPriceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+      dataGridViewCellStyle1.Format = "N2";
+      this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
+      this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+      this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
+      this.totalPriceDataGridViewTextBoxColumn.Width = 128;
+      // 
+      // itemsOverviewDataGridViewTextBoxColumn
+      // 
+      this.itemsOverviewDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.itemsOverviewDataGridViewTextBoxColumn.DataPropertyName = "ItemsOverview";
+      this.itemsOverviewDataGridViewTextBoxColumn.HeaderText = "ItemsOverview";
+      this.itemsOverviewDataGridViewTextBoxColumn.Name = "itemsOverviewDataGridViewTextBoxColumn";
+      this.itemsOverviewDataGridViewTextBoxColumn.ReadOnly = true;
+      this.itemsOverviewDataGridViewTextBoxColumn.Width = 155;
+      // 
       // pnlItems
       // 
       this.pnlItems.AutoScroll = true;
       this.pnlItems.AutoSize = true;
-      this.pnlItems.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pnlItems.Location = new System.Drawing.Point(0, 71);
+      this.pnlItems.Location = new System.Drawing.Point(48, 22);
       this.pnlItems.Name = "pnlItems";
-      this.pnlItems.Size = new System.Drawing.Size(1109, 510);
+      this.pnlItems.Size = new System.Drawing.Size(174, 428);
       this.pnlItems.TabIndex = 2;
-      // 
-      // btnSettings
-      // 
-      this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-      this.btnSettings.Location = new System.Drawing.Point(316, 12);
-      this.btnSettings.Name = "btnSettings";
-      this.btnSettings.Size = new System.Drawing.Size(48, 48);
-      this.btnSettings.TabIndex = 9;
-      this.btnSettings.UseVisualStyleBackColor = true;
-      this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
       // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1109, 581);
-      this.Controls.Add(this.pnlItems);
+      this.Controls.Add(this.pnlFill);
       this.Controls.Add(this.panel1);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.Margin = new System.Windows.Forms.Padding(4);
@@ -197,8 +313,11 @@
       this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
+      this.pnlFill.ResumeLayout(false);
+      this.pnlFill.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.grdItems)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
     }
 
@@ -215,6 +334,15 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.CheckBox chkColorize;
     private System.Windows.Forms.Button btnSettings;
+    private System.Windows.Forms.Panel pnlFill;
+    private System.Windows.Forms.DataGridView grdItems;
+    private System.Windows.Forms.BindingSource invoiceBindingSource;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn shopNameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn orderNumberDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn itemsOverviewDataGridViewTextBoxColumn;
   }
 }
 

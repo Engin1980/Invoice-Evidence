@@ -107,24 +107,27 @@ namespace InvoiceEvidence.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp")]
         public string TesseractTemporalDirectory {
             get {
                 return ((string)(this["TesseractTemporalDirectory"]));
             }
+            set {
+                this["TesseractTemporalDirectory"] = value;
+            }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sfae")]
-        public string bubla {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MainFormExtendedView {
             get {
-                return ((string)(this["bubla"]));
+                return ((bool)(this["MainFormExtendedView"]));
             }
             set {
-                this["bubla"] = value;
+                this["MainFormExtendedView"] = value;
             }
         }
     }
