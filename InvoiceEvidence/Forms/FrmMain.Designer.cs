@@ -45,13 +45,13 @@
       this.btnSave = new System.Windows.Forms.Button();
       this.pnlFill = new System.Windows.Forms.Panel();
       this.grdItems = new System.Windows.Forms.DataGridView();
-      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.shopNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.orderNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.itemsOverviewDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
       this.panel1.SuspendLayout();
       this.pnlFill.SuspendLayout();
@@ -119,6 +119,7 @@
       this.txtQuickFilter.Size = new System.Drawing.Size(180, 23);
       this.txtQuickFilter.TabIndex = 6;
       this.txtQuickFilter.TextChanged += new System.EventHandler(this.txtQuickFilter_TextChanged);
+      this.txtQuickFilter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQuickFilter_KeyUp);
       // 
       // cmbOrderBy
       // 
@@ -229,10 +230,6 @@
       this.grdItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdItems_CellDoubleClick);
       this.grdItems.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdItems_DataBindingComplete);
       // 
-      // invoiceBindingSource
-      // 
-      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
-      // 
       // dateDataGridViewTextBoxColumn
       // 
       this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -290,6 +287,10 @@
       this.itemsOverviewDataGridViewTextBoxColumn.ReadOnly = true;
       this.itemsOverviewDataGridViewTextBoxColumn.Width = 155;
       // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
+      // 
       // pnlItems
       // 
       this.pnlItems.AutoScroll = true;
@@ -310,6 +311,7 @@
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmMain";
       this.Text = "Invoice Evidence";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
       this.Load += new System.EventHandler(this.FrmMain_Load);
       this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
       this.panel1.ResumeLayout(false);

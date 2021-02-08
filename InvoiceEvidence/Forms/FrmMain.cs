@@ -1,5 +1,4 @@
 ﻿using InvoiceEvidence.Controls;
-using InvoiceEvidence.Forms;
 using InvoiceEvidenceLib;
 using Newtonsoft.Json;
 using System;
@@ -192,20 +191,26 @@ namespace InvoiceEvidence.Forms
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-      SaveDatabase();
+      SaveDatabase(out bool success);
     }
 
-    private void SaveDatabase()
+    private void SaveDatabase(out bool success)
     {
       string tmpFile = Path.GetTempFileName();
 
-      string jsonText = JsonConvert.SerializeObject(Program.Invoices, Formatting.Indented);
-
-      System.IO.File.WriteAllText(tmpFile, jsonText);
-
-      File.Copy(tmpFile, Program.DbFile, true);
-
-      MessageBox.Show("Database file saved.", "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      try
+      {
+        string jsonText = JsonConvert.SerializeObject(Program.Invoices, Formatting.Indented);
+        File.WriteAllText(tmpFile, jsonText);
+        File.Copy(tmpFile, Program.DbFile, true);
+        MessageBox.Show("Database file saved.", "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        success = true;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Failed to save the database. {ex.Message}", "Saving failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        success = false;
+      }
     }
 
     private void FrmMain_Load(object sender, EventArgs e)
@@ -264,6 +269,40 @@ namespace InvoiceEvidence.Forms
       };
       frm.ShowDialog();
       RefreshView();
+    }
+
+    private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      var res = MessageBox.Show(this, "You are closing the application. All unsaved changes will be lost." +
+        "Would you like to save the invoices database now?",
+        "Save changes?",
+        MessageBoxButtons.YesNoCancel,
+        MessageBoxIcon.Question);
+
+      if (res == DialogResult.Cancel)
+      {
+        e.Cancel = true;
+        return;
+      }
+      else if (res == DialogResult.Yes)
+      {
+        bool success;
+        SaveDatabase(out success);
+        if (!success)
+        {
+          e.Cancel = true;
+          return;
+        }
+      }
+    }
+
+    private void txtQuickFilter_KeyUp(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Escape)
+      {
+        txtQuickFilter.Text = "";
+        e.Handled = true;
+      }
     }
   }
 }
