@@ -23,7 +23,11 @@ The application is able to recognize text from the invoice. The recognition is b
 
 PDF files are supported via Ghostscript. This tool is used to convert the first page of PDF file into an image, which can be later processed via Tesseract OCR.
 
-Note
+---
+**Note**
+Currently, only the first page of PDF file is processed. For other pages, custom conversion into image must be provided.
+
+---
 
 ## Installation
 
@@ -36,7 +40,11 @@ TODO
 
 To apply image recognition over PDF, [GhostScript](https://www.ghostscript.com/index.html) must be installed. It can be downloaded from [here](https://www.ghostscript.com/download/gsdnld.html). Note where the script is installed, you will need to know `gswin64c.exe` location.
 
-**Note**: As name assumes, I have tested this only on 64bit OS. For 32bit OS, source code improvements must be made.
+---
+**Note**
+As name assumes, I have tested this only on 64bit OS. For 32bit OS, source code improvements must be made.
+
+---
 
 ### 3. Settings update
 
