@@ -21,4 +21,25 @@ The storage is represented by a selected folder. In this folder, a JSON data fil
 
 The application is able to recognize text from the invoice. The recognition is based on the Tesseract OCR project. Default supported languages are "Czech" and "English".
 
+PDF files are supported via Ghostscript. This tool is used to convert the first page of PDF file into an image, which can be later processed via Tesseract OCR.
+
+Note
+
 ## Installation
+
+### 1. Main application
+For now, there is no specific installer. Just download the sources and compile them.
+
+TODO
+
+### 2. PDF Recongition (GhostScript)
+
+To apply image recognition over PDF, [GhostScript](https://www.ghostscript.com/index.html) must be installed. It can be downloaded from [here](https://www.ghostscript.com/download/gsdnld.html). Note where the script is installed, you will need to know `gswin64c.exe` location.
+
+**Note**: As name assumes, I have tested this only on 64bit OS. For 32bit OS, source code improvements must be made.
+
+### 3. Settings update
+
+After the first application startup, ensure the settings are set correctly (mainly Ghostscript directory, Tesseract directory, temporal directory). Settings can be opened via "bars-with-buttons" icon. Update the settings if necessary. No reboot is required.
+
+
