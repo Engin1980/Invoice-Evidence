@@ -303,6 +303,8 @@ namespace InvoiceEvidence.Forms
           return;
         }
       }
+
+      EIO.DoDeleteOnExit();
     }
 
     private void txtQuickFilter_KeyUp(object sender, KeyEventArgs e)

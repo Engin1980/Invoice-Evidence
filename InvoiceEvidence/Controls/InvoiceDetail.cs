@@ -1,5 +1,6 @@
 ﻿using InvoiceEvidenceLib;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -9,11 +10,14 @@ namespace InvoiceEvidence.Controls
   {
     public bool RecognitionEnabled
     {
-      get => this.picInvoice.RecognitionEnabled;
-      set => this.picInvoice.RecognitionEnabled = value;
+      get => picInvoice.RecognitionEnabled;
+      set => picInvoice.RecognitionEnabled = value;
     }
 
     private object lastControl = null;
+    private Image pdfExtractedImage = null;
+
+
 
     private Invoice _Invoice;
     public Invoice Invoice
@@ -22,8 +26,9 @@ namespace InvoiceEvidence.Controls
       set
       {
         _Invoice = value;
-        if (value != null) {
-          this.invoiceBindingSource.DataSource = value;
+        if (value != null)
+        {
+          invoiceBindingSource.DataSource = value;
           picInvoice.SetImageFile(
             System.IO.Path.Combine(Program.DbPath, value.FileName));
           picInvoice.ZoomFit();

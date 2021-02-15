@@ -69,9 +69,9 @@ namespace InvoiceEvidence.Properties
         displayName: "Tesseract languages",
         description: "Supported languages in tesseract format (e.g., eng+fra). Training files must be available" +
         "in tesseract 'tessdata' directory for every language."));
-      pds.Add(SimplePropertyDescriptor.Create("TesseractTemporalDirectory",
-        category: "Tesseract",
-        displayName: "Tesseract temporal directory",
+      pds.Add(SimplePropertyDescriptor.Create("TempDirectory",
+        category: "Behavior",
+        displayName: "Temp directory",
         description: "Directory where Tesseract stores temporal image files. SSD/RamDisk location preffered."));
       pds.Add(SimplePropertyDescriptor.Create("InvoiceNewBackColor",
         category: "Invoices",
@@ -102,6 +102,10 @@ namespace InvoiceEvidence.Properties
         category: "Behavior",
         displayName: "Supported file extensions",
         description: "File extension separated by ; character."));
+      pds.Add(SimplePropertyDescriptor.Create("GhostscriptLocation",
+        category: "GhostScript",
+        displayName: "Ghostscript location",
+        description: "Folder where gswin64c.exe is located."));
 
       // add the default ones
       PropertyDescriptorCollection tmp = TypeDescriptor.GetProperties(typeof(Settings));

@@ -110,12 +110,12 @@ namespace InvoiceEvidence.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp")]
-        public string TesseractTemporalDirectory {
+        public string TempDirectory {
             get {
-                return ((string)(this["TesseractTemporalDirectory"]));
+                return ((string)(this["TempDirectory"]));
             }
             set {
-                this["TesseractTemporalDirectory"] = value;
+                this["TempDirectory"] = value;
             }
         }
         
@@ -140,6 +140,18 @@ namespace InvoiceEvidence.Properties {
             }
             set {
                 this["SupportedExtension"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\gs\\gs9.53.3\\bin")]
+        public string GhostscriptLocation {
+            get {
+                return ((string)(this["GhostscriptLocation"]));
+            }
+            set {
+                this["GhostscriptLocation"] = value;
             }
         }
     }

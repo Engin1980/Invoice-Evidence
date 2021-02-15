@@ -13,8 +13,8 @@ namespace InvoiceEvidence.Controls
 
     public bool RecognitionEnabled
     {
-      get => this.chkRecognizeOn.Checked;
-      set => this.chkRecognizeOn.Checked = value;
+      get => chkRecognizeOn.Checked;
+      set => chkRecognizeOn.Checked = value;
     }
 
     private class Zoom
@@ -45,23 +45,72 @@ namespace InvoiceEvidence.Controls
       }
     }
 
-    private Image originalImage;
-    private Image scalledImage;
+    private Image _OriginalImage;
+    private Image OriginalImage
+    {
+      get => _OriginalImage;
+      set
+      {
+        if (_OriginalImage != null)
+          _OriginalImage.Dispose();
+        _OriginalImage = value;
+      }
+    }
+
+    private Image _ScalledImage;
+    private Image ScalledImage
+    {
+      get => _ScalledImage; set
+      {
+        if (_ScalledImage != null)
+          _ScalledImage.Dispose();
+        _ScalledImage = value;
+      }
+    }
     private Zoom zoom = new Zoom();
     private IOCR ocr = new TesseractOCR();
 
     public void ClearImageFile()
     {
-      originalImage = null;
-      scalledImage = null;
+      OriginalImage = null;
+      ScalledImage = null;
       zoom.Reset();
       pic.Image = null;
     }
 
+
+
     public void SetImageFile(string fileName)
     {
-      originalImage = Image.FromFile(fileName);
+      Image img;
+      if (fileName.ToLower().EndsWith(".pdf"))
+        img = LoadPdf(fileName);
+      else
+        img = LoadImage(fileName);
+
+      OriginalImage = img;
       RefreshImage();
+    }
+
+    private Image LoadPdf(string fileName)
+    {
+      Image ret;
+      ret = PdfToImageExtractor.ExtractImage(fileName);
+      return ret;
+    }
+
+    private Image LoadImage(string fileName)
+    {
+      Image ret;
+      try
+      {
+        ret = Image.FromFile(fileName);
+      }
+      catch (Exception ex)
+      {
+        throw new ApplicationException($"Failed to load image file '{fileName}'.", ex);
+      }
+      return ret;
     }
 
     public void ZoomReset()
@@ -84,7 +133,7 @@ namespace InvoiceEvidence.Controls
 
     public void ZoomFit()
     {
-      int imgWidth = originalImage.Width;
+      int imgWidth = OriginalImage.Width;
       int cmpWidth = pnlContent.Width;
       double zoom = cmpWidth / (double)imgWidth;
       this.zoom.Set(zoom);
@@ -94,13 +143,13 @@ namespace InvoiceEvidence.Controls
     private void RefreshImage()
     {
       if (zoom.Value != 1)
-        scalledImage = new System.Drawing.Bitmap(
-          originalImage,
-          originalImage.Size.Multiply(zoom.Value));
+        ScalledImage = new Bitmap(
+          OriginalImage,
+          OriginalImage.Size.Multiply(zoom.Value));
       else
-        scalledImage = originalImage;
+        ScalledImage = new Bitmap(OriginalImage);
 
-      pic.Image = scalledImage;
+      pic.Image = ScalledImage;
     }
 
     public InvoiceImage()
@@ -157,18 +206,22 @@ namespace InvoiceEvidence.Controls
 
       Rectangle r = new Rectangle((int)x, (int)y, (int)width, (int)height);
 
-      Bitmap image = new Bitmap(originalImage);
-      image = image.Clone(r, image.PixelFormat);
-
-      string s = ocr.ReadText(image);
+      string s;
+      using (Bitmap image = new Bitmap(OriginalImage))
+      {
+        using (Bitmap subimage = image.Clone(r, image.PixelFormat))
+        {
+          s = ocr.ReadText(image);
+        }
+      }
 
       BlockTextRecognized?.Invoke(this, s);
     }
 
     private void DoImageMove(Point mouseDownPoint, Point mouseUpPoint)
     {
-      int widthChange = - (mouseUpPoint.X - mouseDownPoint.X);
-      int heightChange = - (mouseUpPoint.Y - mouseDownPoint.Y);
+      int widthChange = -(mouseUpPoint.X - mouseDownPoint.X);
+      int heightChange = -(mouseUpPoint.Y - mouseDownPoint.Y);
       pnlContent.VerticalScroll.Value = EnsureBetween(
         pnlContent.VerticalScroll.Minimum,
         pnlContent.VerticalScroll.Value + heightChange,

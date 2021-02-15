@@ -7,7 +7,7 @@ namespace InvoiceEvidence.OCR
   public class TesseractOCR : IOCR
   {
     private static readonly string TESSERACT_MASTER_DIR = Properties.Settings.Default.TesseractDirectory;
-    private static string TEMPORAL_DIRECTORY { get; set; } = Properties.Settings.Default.TesseractTemporalDirectory;
+    private static string TEMPORAL_DIRECTORY { get; set; } = Properties.Settings.Default.TempDirectory;
     private static readonly string LANGUAGES = Properties.Settings.Default.TesseractLanguages;
     private static string GetTesseractMasterDirectory()
     {
@@ -16,19 +16,10 @@ namespace InvoiceEvidence.OCR
       ret = System.IO.Path.Combine(ret, TESSERACT_MASTER_DIR);
       return ret;
     }
-    private static string GetTempFileName(string extension)
-    {
-      string ret = null;
-      do
-      {
-        ret = System.IO.Path.Combine(TEMPORAL_DIRECTORY, System.IO.Path.GetRandomFileName() + "." + extension);
-      } while (System.IO.File.Exists(ret));
-      return ret;
-    }
 
     public string ReadText(Image img)
     {
-      string tempImageFileName = GetTempFileName("jpg");
+      string tempImageFileName = EIO.GetTempFileName("jpg");
       string tempTextFileName = tempImageFileName;
       img.Save(tempImageFileName);
 

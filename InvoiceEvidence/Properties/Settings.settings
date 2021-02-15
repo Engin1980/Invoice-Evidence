@@ -23,7 +23,7 @@
     <Setting Name="InvoiceNewDaysCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">14</Value>
     </Setting>
-    <Setting Name="TesseractTemporalDirectory" Type="System.String" Scope="User">
+    <Setting Name="TempDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Temp</Value>
     </Setting>
     <Setting Name="MainFormExtendedView" Type="System.Boolean" Scope="User">
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="SupportedExtension" Type="System.String" Scope="User">
       <Value Profile="(Default)">jpg;png</Value>
+    </Setting>
+    <Setting Name="GhostscriptLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\gs\gs9.53.3\bin</Value>
     </Setting>
   </Settings>
 </SettingsFile>

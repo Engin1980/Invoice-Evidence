@@ -87,6 +87,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Db.cs" />
+    <Compile Include="EIO.cs" />
     <Compile Include="Forms\FrmDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +120,7 @@
     </Compile>
     <Compile Include="OCR\IOCR.cs" />
     <Compile Include="OCR\TesseractOCR.cs" />
+    <Compile Include="PdfToImageExtractor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SettingsPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
