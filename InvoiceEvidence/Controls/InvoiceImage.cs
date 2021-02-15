@@ -8,21 +8,11 @@ namespace InvoiceEvidence.Controls
 {
   public partial class InvoiceImage : UserControl
   {
-    public delegate void OnBlockTextRecognized(InvoiceImage sender, string text);
-
-    public event OnBlockTextRecognized BlockTextRecognized;
-
-    public bool RecognitionEnabled
-    {
-      get => chkRecognizeOn.Checked;
-      set => chkRecognizeOn.Checked = value;
-    }
-
     private class Zoom
     {
-      private const double STEP = 0.1;
-      private const double MIN = 0.1;
       private const double MAX = 10;
+      private const double MIN = 0.1;
+      private const double STEP = 0.1;
       public double Value { get; private set; } = 1;
 
       public void Reset()
@@ -46,7 +36,22 @@ namespace InvoiceEvidence.Controls
       }
     }
 
-    private string OriginalImageFileName { get; set; }
+    public delegate void OnBlockTextRecognized(InvoiceImage sender, string text);
+
+    public event OnBlockTextRecognized BlockTextRecognized;
+
+    private Point mouseDownPoint;
+
+    private IOCR ocr = new TesseractOCR();
+
+    private Zoom zoom = new Zoom();
+
+    public bool RecognitionEnabled
+    {
+      get => chkRecognizeOn.Checked;
+      set => chkRecognizeOn.Checked = value;
+    }
+
     private Image _OriginalImage;
     private Image OriginalImage
     {
@@ -59,6 +64,8 @@ namespace InvoiceEvidence.Controls
       }
     }
 
+    private string OriginalImageFileName { get; set; }
+
     private Image _ScalledImage;
     private Image ScalledImage
     {
@@ -69,9 +76,11 @@ namespace InvoiceEvidence.Controls
         _ScalledImage = value;
       }
     }
-    private Zoom zoom = new Zoom();
-    private IOCR ocr = new TesseractOCR();
 
+    public InvoiceImage()
+    {
+      InitializeComponent();
+    }
     public void ClearImageFile()
     {
       OriginalImageFileName = null;
@@ -81,11 +90,9 @@ namespace InvoiceEvidence.Controls
       pic.Image = null;
     }
 
-
-
     public void SetImageFile(string fileName)
     {
-      this.OriginalImageFileName = fileName;
+      OriginalImageFileName = fileName;
       Image img;
       if (fileName.ToLower().EndsWith(".pdf"))
         img = LoadPdf(fileName);
@@ -96,30 +103,12 @@ namespace InvoiceEvidence.Controls
       RefreshImage();
     }
 
-    private Image LoadPdf(string fileName)
+    public void ZoomFit()
     {
-      Image ret;
-      ret = PdfToImageExtractor.ExtractImage(fileName);
-      return ret;
-    }
-
-    private Image LoadImage(string fileName)
-    {
-      Image ret;
-      try
-      {
-        ret = Image.FromFile(fileName);
-      }
-      catch (Exception ex)
-      {
-        throw new ApplicationException($"Failed to load image file '{fileName}'.", ex);
-      }
-      return ret;
-    }
-
-    public void ZoomReset()
-    {
-      zoom.Reset();
+      int imgWidth = OriginalImage.Width;
+      int cmpWidth = pnlContent.Width;
+      double zoom = cmpWidth / (double)imgWidth;
+      this.zoom.Set(zoom);
       RefreshImage();
     }
 
@@ -135,65 +124,55 @@ namespace InvoiceEvidence.Controls
       RefreshImage();
     }
 
-    public void ZoomFit()
+    public void ZoomReset()
     {
-      int imgWidth = OriginalImage.Width;
-      int cmpWidth = pnlContent.Width;
-      double zoom = cmpWidth / (double)imgWidth;
-      this.zoom.Set(zoom);
+      zoom.Reset();
       RefreshImage();
     }
 
-    private void RefreshImage()
+    private void btnOpenInExplorer_Click(object sender, EventArgs e)
     {
-      if (zoom.Value != 1)
-        ScalledImage = new Bitmap(
-          OriginalImage,
-          OriginalImage.Size.Multiply(zoom.Value));
-      else
-        ScalledImage = new Bitmap(OriginalImage);
+      ProcessStartInfo psi = new ProcessStartInfo()
+      {
+        FileName = "explorer.exe",
+        Arguments = $" /select,\"{OriginalImageFileName}\""
+      };
 
-      pic.Image = ScalledImage;
+      Process p = new Process()
+      {
+        StartInfo = psi
+      };
+
+      p.Start();
     }
 
-    public InvoiceImage()
+    private void btnZoomFit_Click(object sender, EventArgs e)
     {
-      InitializeComponent();
+      ZoomFit();
     }
 
-    private void zoominToolStripMenuItem_Click(object sender, System.EventArgs e)
+    private void btnZoomIn_Click(object sender, EventArgs e)
     {
       ZoomIn();
     }
 
-    private void zoomoutToolStripMenuItem_Click(object sender, System.EventArgs e)
+    private void btnZoomOut_Click(object sender, EventArgs e)
     {
       ZoomOut();
     }
 
-    private void zoomresetToolStripMenuItem_Click(object sender, System.EventArgs e)
+    private void DoImageMove(Point mouseDownPoint, Point mouseUpPoint)
     {
-      ZoomReset();
-    }
-
-    private Point mouseDownPoint;
-
-    private void pic_MouseDown(object sender, MouseEventArgs e)
-    {
-      mouseDownPoint = e.Location;
-    }
-
-    private void pic_MouseUp(object sender, MouseEventArgs e)
-    {
-      Point mouseUpPoint = e.Location;
-
-      if (e.Button == MouseButtons.Left)
-      {
-        if (chkRecognizeOn.Checked)
-          DoImageRecognition(mouseDownPoint, mouseUpPoint);
-      }
-      else if (e.Button == MouseButtons.Middle)
-        DoImageMove(mouseDownPoint, mouseUpPoint);
+      int widthChange = -(mouseUpPoint.X - mouseDownPoint.X);
+      int heightChange = -(mouseUpPoint.Y - mouseDownPoint.Y);
+      pnlContent.VerticalScroll.Value = EnsureBetween(
+        pnlContent.VerticalScroll.Minimum,
+        pnlContent.VerticalScroll.Value + heightChange,
+        pnlContent.VerticalScroll.Maximum);
+      pnlContent.HorizontalScroll.Value = EnsureBetween(
+        pnlContent.HorizontalScroll.Minimum,
+        pnlContent.HorizontalScroll.Value + widthChange,
+        pnlContent.HorizontalScroll.Maximum);
     }
 
     private void DoImageRecognition(Point mouseDownPoint, Point mouseUpPoint)
@@ -222,55 +201,75 @@ namespace InvoiceEvidence.Controls
       BlockTextRecognized?.Invoke(this, s);
     }
 
-    private void DoImageMove(Point mouseDownPoint, Point mouseUpPoint)
-    {
-      int widthChange = -(mouseUpPoint.X - mouseDownPoint.X);
-      int heightChange = -(mouseUpPoint.Y - mouseDownPoint.Y);
-      pnlContent.VerticalScroll.Value = EnsureBetween(
-        pnlContent.VerticalScroll.Minimum,
-        pnlContent.VerticalScroll.Value + heightChange,
-        pnlContent.VerticalScroll.Maximum);
-      pnlContent.HorizontalScroll.Value = EnsureBetween(
-        pnlContent.HorizontalScroll.Minimum,
-        pnlContent.HorizontalScroll.Value + widthChange,
-        pnlContent.HorizontalScroll.Maximum);
-
-    }
-
     private int EnsureBetween(int minimum, int value, int maximum)
     {
       return Math.Max(minimum, Math.Min(value, maximum));
     }
 
-    private void btnZoomIn_Click(object sender, EventArgs e)
+    private Image LoadImage(string fileName)
+    {
+      Image ret;
+      try
+      {
+        ret = Image.FromFile(fileName);
+      }
+      catch (Exception ex)
+      {
+        throw new ApplicationException($"Failed to load image file '{fileName}'.", ex);
+      }
+      return ret;
+    }
+
+    private Image LoadPdf(string fileName)
+    {
+      Image ret;
+      ret = PdfToImageExtractor.ExtractImage(fileName);
+      return ret;
+    }
+
+    private void pic_MouseDown(object sender, MouseEventArgs e)
+    {
+      mouseDownPoint = e.Location;
+    }
+
+    private void pic_MouseUp(object sender, MouseEventArgs e)
+    {
+      Point mouseUpPoint = e.Location;
+
+      if (e.Button == MouseButtons.Left)
+      {
+        if (chkRecognizeOn.Checked)
+          DoImageRecognition(mouseDownPoint, mouseUpPoint);
+      }
+      else if (e.Button == MouseButtons.Middle)
+        DoImageMove(mouseDownPoint, mouseUpPoint);
+    }
+
+    private void RefreshImage()
+    {
+      if (zoom.Value != 1)
+        ScalledImage = new Bitmap(
+          OriginalImage,
+          OriginalImage.Size.Multiply(zoom.Value));
+      else
+        ScalledImage = new Bitmap(OriginalImage);
+
+      pic.Image = ScalledImage;
+    }
+
+    private void zoominToolStripMenuItem_Click(object sender, System.EventArgs e)
     {
       ZoomIn();
     }
 
-    private void btnZoomOut_Click(object sender, EventArgs e)
+    private void zoomoutToolStripMenuItem_Click(object sender, System.EventArgs e)
     {
       ZoomOut();
     }
 
-    private void btnZoomFit_Click(object sender, EventArgs e)
+    private void zoomresetToolStripMenuItem_Click(object sender, System.EventArgs e)
     {
-      ZoomFit();
-    }
-
-    private void btnOpenInExplorer_Click(object sender, EventArgs e)
-    {
-      ProcessStartInfo psi = new ProcessStartInfo()
-      {
-         FileName="explorer.exe",
-         Arguments = $" /select,\"{OriginalImageFileName}\""
-      };
-
-      Process p = new Process()
-      {
-        StartInfo = psi
-      };
-
-      p.Start();
+      ZoomReset();
     }
   }
 }
