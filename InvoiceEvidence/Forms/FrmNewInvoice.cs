@@ -60,7 +60,7 @@ namespace InvoiceEvidence.Forms
 
     private void RefreshFilesList(int presetIndex = -1)
     {
-      fileItems = System.IO.Directory.GetFiles(Program.DbPath)
+      fileItems = Directory.GetFiles(Program.DbPath)
         .Where(q => q.Length > 4 && IsFileNameWithAcceptedExtension(q))
         .Select(q => new FileInfo(q))
         .Where(q => !Program.Invoices.Any(r => r.FileName == q.Name))
