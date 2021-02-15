@@ -142,6 +142,7 @@
       this.btnOpenInExplorer.Size = new System.Drawing.Size(40, 40);
       this.btnOpenInExplorer.TabIndex = 5;
       this.btnOpenInExplorer.UseVisualStyleBackColor = true;
+      this.btnOpenInExplorer.Click += new System.EventHandler(this.btnOpenInExplorer_Click);
       // 
       // chkRecognizeOn
       // 

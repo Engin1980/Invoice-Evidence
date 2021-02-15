@@ -1,5 +1,6 @@
 ﻿using InvoiceEvidence.OCR;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -45,6 +46,7 @@ namespace InvoiceEvidence.Controls
       }
     }
 
+    private string OriginalImageFileName { get; set; }
     private Image _OriginalImage;
     private Image OriginalImage
     {
@@ -72,6 +74,7 @@ namespace InvoiceEvidence.Controls
 
     public void ClearImageFile()
     {
+      OriginalImageFileName = null;
       OriginalImage = null;
       ScalledImage = null;
       zoom.Reset();
@@ -82,6 +85,7 @@ namespace InvoiceEvidence.Controls
 
     public void SetImageFile(string fileName)
     {
+      this.OriginalImageFileName = fileName;
       Image img;
       if (fileName.ToLower().EndsWith(".pdf"))
         img = LoadPdf(fileName);
@@ -251,6 +255,22 @@ namespace InvoiceEvidence.Controls
     private void btnZoomFit_Click(object sender, EventArgs e)
     {
       ZoomFit();
+    }
+
+    private void btnOpenInExplorer_Click(object sender, EventArgs e)
+    {
+      ProcessStartInfo psi = new ProcessStartInfo()
+      {
+         FileName="explorer.exe",
+         Arguments = $" /select,\"{OriginalImageFileName}\""
+      };
+
+      Process p = new Process()
+      {
+        StartInfo = psi
+      };
+
+      p.Start();
     }
   }
 }
