@@ -14,7 +14,8 @@ namespace InvoiceEvidence.Forms
     {
       public Invoice Value { get; set; }
       public string Label { get => Value.FileName; }
-      public override string ToString() => Label;
+      public bool Ignored { get; set; }
+      public override string ToString() => Ignored ? "[ignored] " + Label : Label;
     }
 
     private List<ListBoxItem> fileItems = new List<ListBoxItem>();
@@ -45,8 +46,6 @@ namespace InvoiceEvidence.Forms
       set => _IgnoredFiles = value ?? new List<string>();
     }
 
-    private string[] imageExtensions = { ".png", ".jpg", ".bmp" };
-
     public FrmNewInvoice()
     {
       InitializeComponent();
@@ -62,11 +61,15 @@ namespace InvoiceEvidence.Forms
     private void RefreshFilesList(int presetIndex = -1)
     {
       fileItems = System.IO.Directory.GetFiles(Program.DbPath)
-        .Where(q => q.Length > 4 && imageExtensions.Contains(q.Substring(q.Length - 4)))
+        .Where(q => q.Length > 4 && IsFileNameWithAcceptedExtension(q))
         .Select(q => new FileInfo(q))
         .Where(q => !Program.Invoices.Any(r => r.FileName == q.Name))
         .OrderBy(q => q.Name)
-        .Select(q => new ListBoxItem() { Value = new Invoice(q.Name, 7) })
+        .Select(q => new ListBoxItem()
+        {
+          Value = new Invoice(q.Name, 7),
+          Ignored = IgnoredFiles.Contains(q.Name)
+        })
         .ToList();
 
       if (chkShowIgnored.Checked == false)
@@ -78,6 +81,12 @@ namespace InvoiceEvidence.Forms
 
       if (presetIndex >= 0 && fileItems.Count > 0 && presetIndex < fileItems.Count)
         lstFiles.SelectedIndex = presetIndex;
+    }
+
+    private bool IsFileNameWithAcceptedExtension(string fileName)
+    {
+      bool ret = Properties.Settings.Default.SupportedExtension.Split(';').Any(q => fileName.EndsWith(q));
+      return ret;
     }
 
     private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
