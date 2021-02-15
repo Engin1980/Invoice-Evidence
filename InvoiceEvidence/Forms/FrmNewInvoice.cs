@@ -38,6 +38,13 @@ namespace InvoiceEvidence.Forms
       }
     }
 
+    private List<string> _IgnoredFiles = new List<string>();
+    public List<string> IgnoredFiles
+    {
+      get => _IgnoredFiles;
+      set => _IgnoredFiles = value ?? new List<string>();
+    }
+
     private string[] imageExtensions = { ".png", ".jpg", ".bmp" };
 
     public FrmNewInvoice()
@@ -61,6 +68,11 @@ namespace InvoiceEvidence.Forms
         .OrderBy(q => q.Name)
         .Select(q => new ListBoxItem() { Value = new Invoice(q.Name, 7) })
         .ToList();
+
+      if (chkShowIgnored.Checked == false)
+        fileItems = fileItems
+          .Where(q => IgnoredFiles.Contains(q.Value.FileName) == false)
+          .ToList();
 
       lstFiles.DataSource = fileItems;
 
@@ -89,6 +101,28 @@ namespace InvoiceEvidence.Forms
       lstFiles.DataSource = null;
       fileItems.RemoveAt(index);
       RefreshFilesList(index);
+    }
+
+    private void toggleIgnoredToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (Item == null) return;
+
+      if (IgnoredFiles.Contains(Item.Value.FileName))
+        IgnoredFiles.Remove(Item.Value.FileName);
+      else
+        IgnoredFiles.Add(Item.Value.FileName);
+
+      RefreshFilesList(lstFiles.SelectedIndex);
+    }
+
+    private void refreshListToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      RefreshFilesList(lstFiles.SelectedIndex);
+    }
+
+    private void chkShowIgnored_CheckedChanged(object sender, EventArgs e)
+    {
+      RefreshFilesList();
     }
   }
 }

@@ -21,7 +21,9 @@ namespace InvoiceEvidence.Forms
 
     private void btnAnalyseNewFiles_Click(object sender, EventArgs e)
     {
-      new FrmNewInvoice().ShowDialog();
+      var f = new FrmNewInvoice();
+      f.IgnoredFiles = Program.Db.IgnoredFiles;
+      f.ShowDialog();
       RefreshView();
     }
 
@@ -181,8 +183,14 @@ namespace InvoiceEvidence.Forms
       using (StreamReader rdr = new StreamReader(File.Open(Program.DbFile, FileMode.Open)))
       {
         JsonSerializer ser = new JsonSerializer();
-        List<Invoice> tmp = (List<Invoice>)ser.Deserialize(rdr, typeof(List<Invoice>));
-        Program.Invoices = tmp;
+        Db db = (Db)ser.Deserialize(rdr, typeof(Db));
+        Program.Db = db;
+      }
+      if (string.IsNullOrEmpty(Program.Db.RelativePath) == false &&
+        Program.DbPath != Program.Db.RelativePath)
+      {
+        MessageBox.Show($"Note that the last stored path for this database file was '{Program.Db.RelativePath}'. " +
+           " Proceed with caution.", "Database path mismatch!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       RefreshView();
 
@@ -196,11 +204,12 @@ namespace InvoiceEvidence.Forms
 
     private void SaveDatabase(out bool success)
     {
-      string tmpFile = Path.GetTempFileName();
+      Program.Db.RelativePath = Program.DbPath;
 
+      string tmpFile = Path.GetTempFileName();
       try
       {
-        string jsonText = JsonConvert.SerializeObject(Program.Invoices, Formatting.Indented);
+        string jsonText = JsonConvert.SerializeObject(Program.Db, Formatting.Indented);
         File.WriteAllText(tmpFile, jsonText);
         File.Copy(tmpFile, Program.DbFile, true);
         MessageBox.Show("Database file saved.", "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);

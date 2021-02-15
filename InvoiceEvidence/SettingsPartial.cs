@@ -98,6 +98,10 @@ namespace InvoiceEvidence.Properties
         category: "View",
         displayName: "Vertical scrollbar placeholder width",
         description: "Width (in pixels) reserved for vertical scrollbar on the right side of main form."));
+      pds.Add(SimplePropertyDescriptor.Create("SupportedExtension",
+        category: "Behavior",
+        displayName: "Supported file extensions",
+        description: "File extension separated by ; character."));
 
       // add the default ones
       PropertyDescriptorCollection tmp = TypeDescriptor.GetProperties(typeof(Settings));

@@ -29,5 +29,8 @@
     <Setting Name="MainFormExtendedView" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SupportedExtension" Type="System.String" Scope="User">
+      <Value Profile="(Default)">jpg;png</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

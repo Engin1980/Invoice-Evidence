@@ -130,5 +130,17 @@ namespace InvoiceEvidence.Properties {
                 this["MainFormExtendedView"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("jpg;png")]
+        public string SupportedExtension {
+            get {
+                return ((string)(this["SupportedExtension"]));
+            }
+            set {
+                this["SupportedExtension"] = value;
+            }
+        }
     }
 }

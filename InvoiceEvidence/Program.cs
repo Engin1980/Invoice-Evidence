@@ -12,7 +12,8 @@ namespace InvoiceEvidence
     {
       get => System.IO.Path.Combine(DbPath, "_invoices_db.json");
     }
-    public static List<Invoice> Invoices { get; set; } = new List<Invoice>();
+    public static Db Db { get; set; } = new Db();
+    public static List<Invoice> Invoices { get => Program.Db.Invoices; }
 
     /// <summary>
     /// The main entry point for the application.
