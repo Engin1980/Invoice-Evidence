@@ -95,12 +95,32 @@ namespace InvoiceEvidence.Controls
       OriginalImageFileName = fileName;
       Image img;
       if (fileName.ToLower().EndsWith(".pdf"))
-        img = LoadPdf(fileName);
+        try
+        {
+          img = LoadPdf(fileName);
+        }
+        catch (Exception ex)
+        {
+          lblMessage.Text = "PDF-as-image view is not available. " + ex.GetJoinedMessages();
+          pic.Visible = false;
+          return;
+        }
       else
-        img = LoadImage(fileName);
+        try
+        {
+          img = LoadImage(fileName);
+        }
+        catch (Exception ex)
+        {
+          lblMessage.Text = "Image preview is not available. " + ex.GetJoinedMessages();
+          pic.Visible = false;
+          return;
+        }
+
 
       OriginalImage = img;
       RefreshImage();
+      pic.Visible = true;
     }
 
     public void ZoomFit()
@@ -223,7 +243,13 @@ namespace InvoiceEvidence.Controls
     private Image LoadPdf(string fileName)
     {
       Image ret;
-      ret = PdfToImageExtractor.ExtractImage(fileName);
+      try {
+        ret = PdfToImageExtractor.ExtractImage(fileName);
+      } catch(Exception ex)
+      {
+        throw new ApplicationException($"Failed to load pdf preview of '{fileName}.", ex);
+      }
+      
       return ret;
     }
 

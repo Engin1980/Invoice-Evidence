@@ -46,6 +46,7 @@
       this.btnZoomOut = new System.Windows.Forms.Button();
       this.btnZoomIn = new System.Windows.Forms.Button();
       this.pnlContent = new System.Windows.Forms.Panel();
+      this.lblMessage = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
       this.cmsPic.SuspendLayout();
       this.pnlLeft.SuspendLayout();
@@ -188,11 +189,22 @@
       // 
       this.pnlContent.AutoScroll = true;
       this.pnlContent.Controls.Add(this.pic);
+      this.pnlContent.Controls.Add(this.lblMessage);
       this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pnlContent.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
       this.pnlContent.Location = new System.Drawing.Point(55, 0);
       this.pnlContent.Name = "pnlContent";
       this.pnlContent.Size = new System.Drawing.Size(711, 482);
       this.pnlContent.TabIndex = 2;
+      // 
+      // lblMessage
+      // 
+      this.lblMessage.AutoSize = true;
+      this.lblMessage.Location = new System.Drawing.Point(6, 8);
+      this.lblMessage.Name = "lblMessage";
+      this.lblMessage.Size = new System.Drawing.Size(17, 17);
+      this.lblMessage.TabIndex = 1;
+      this.lblMessage.Text = "-";
       // 
       // InvoiceImage
       // 
@@ -230,5 +242,6 @@
     private System.Windows.Forms.Panel pnlContent;
     private System.Windows.Forms.CheckBox chkRecognizeOn;
     private System.Windows.Forms.Button btnOpenInExplorer;
+    private System.Windows.Forms.Label lblMessage;
   }
 }
