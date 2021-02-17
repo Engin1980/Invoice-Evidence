@@ -29,30 +29,31 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewInvoice));
       this.splMain = new System.Windows.Forms.SplitContainer();
       this.chkShowIgnored = new System.Windows.Forms.CheckBox();
       this.lstFiles = new System.Windows.Forms.ListBox();
-      this.pnlImage = new System.Windows.Forms.Panel();
-      this.pnlFill = new System.Windows.Forms.Panel();
-      this.pnlBottom = new System.Windows.Forms.Panel();
-      this.btnSave = new System.Windows.Forms.Button();
-      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.ctxLstFiles = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.toggleIgnoredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
       this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.pnlImage = new System.Windows.Forms.Panel();
+      this.pnlFill = new System.Windows.Forms.Panel();
       this.invoceDetail = new InvoiceEvidence.Controls.InvoiceDetail();
+      this.pnlBottom = new System.Windows.Forms.Panel();
+      this.btnSave = new System.Windows.Forms.Button();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).BeginInit();
       this.splMain.Panel1.SuspendLayout();
       this.splMain.Panel2.SuspendLayout();
       this.splMain.SuspendLayout();
+      this.ctxLstFiles.SuspendLayout();
       this.pnlImage.SuspendLayout();
       this.pnlFill.SuspendLayout();
       this.pnlBottom.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
-      this.ctxLstFiles.SuspendLayout();
       this.SuspendLayout();
       // 
       // splMain
@@ -100,6 +101,35 @@
       this.lstFiles.TabIndex = 0;
       this.lstFiles.SelectedIndexChanged += new System.EventHandler(this.lstFiles_SelectedIndexChanged);
       // 
+      // ctxLstFiles
+      // 
+      this.ctxLstFiles.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.ctxLstFiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toggleIgnoredToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.refreshListToolStripMenuItem});
+      this.ctxLstFiles.Name = "ctxLstFiles";
+      this.ctxLstFiles.Size = new System.Drawing.Size(202, 54);
+      // 
+      // toggleIgnoredToolStripMenuItem
+      // 
+      this.toggleIgnoredToolStripMenuItem.Name = "toggleIgnoredToolStripMenuItem";
+      this.toggleIgnoredToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+      this.toggleIgnoredToolStripMenuItem.Text = "Toggle ignored";
+      this.toggleIgnoredToolStripMenuItem.Click += new System.EventHandler(this.toggleIgnoredToolStripMenuItem_Click);
+      // 
+      // toolStripMenuItem1
+      // 
+      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 6);
+      // 
+      // refreshListToolStripMenuItem
+      // 
+      this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
+      this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+      this.refreshListToolStripMenuItem.Text = "Refresh list";
+      this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
+      // 
       // pnlImage
       // 
       this.pnlImage.AutoScroll = true;
@@ -119,6 +149,18 @@
       this.pnlFill.Name = "pnlFill";
       this.pnlFill.Size = new System.Drawing.Size(1004, 414);
       this.pnlFill.TabIndex = 1;
+      // 
+      // invoceDetail
+      // 
+      this.invoceDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.invoceDetail.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.invoceDetail.Invoice = null;
+      this.invoceDetail.Location = new System.Drawing.Point(0, 0);
+      this.invoceDetail.Margin = new System.Windows.Forms.Padding(4);
+      this.invoceDetail.Name = "invoceDetail";
+      this.invoceDetail.RecognitionEnabled = false;
+      this.invoceDetail.Size = new System.Drawing.Size(1004, 414);
+      this.invoceDetail.TabIndex = 0;
       // 
       // pnlBottom
       // 
@@ -150,47 +192,6 @@
       this.itemsBindingSource.DataMember = "Items";
       this.itemsBindingSource.DataSource = this.invoiceBindingSource;
       // 
-      // ctxLstFiles
-      // 
-      this.ctxLstFiles.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-      this.ctxLstFiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toggleIgnoredToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.refreshListToolStripMenuItem});
-      this.ctxLstFiles.Name = "ctxLstFiles";
-      this.ctxLstFiles.Size = new System.Drawing.Size(202, 76);
-      // 
-      // toggleIgnoredToolStripMenuItem
-      // 
-      this.toggleIgnoredToolStripMenuItem.Name = "toggleIgnoredToolStripMenuItem";
-      this.toggleIgnoredToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-      this.toggleIgnoredToolStripMenuItem.Text = "Toggle ignored";
-      this.toggleIgnoredToolStripMenuItem.Click += new System.EventHandler(this.toggleIgnoredToolStripMenuItem_Click);
-      // 
-      // toolStripMenuItem1
-      // 
-      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(150, 6);
-      // 
-      // refreshListToolStripMenuItem
-      // 
-      this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
-      this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-      this.refreshListToolStripMenuItem.Text = "Refresh list";
-      this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
-      // 
-      // invoceDetail
-      // 
-      this.invoceDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.invoceDetail.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-      this.invoceDetail.Invoice = null;
-      this.invoceDetail.Location = new System.Drawing.Point(0, 0);
-      this.invoceDetail.Margin = new System.Windows.Forms.Padding(4);
-      this.invoceDetail.Name = "invoceDetail";
-      this.invoceDetail.RecognitionEnabled = false;
-      this.invoceDetail.Size = new System.Drawing.Size(1004, 414);
-      this.invoceDetail.TabIndex = 0;
-      // 
       // FrmNewInvoice
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -198,20 +199,21 @@
       this.ClientSize = new System.Drawing.Size(1184, 474);
       this.Controls.Add(this.splMain);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmNewInvoice";
-      this.Text = "FrmNewInvoice";
+      this.Text = "New invoices";
       this.Load += new System.EventHandler(this.FrmNewInvoice_Load);
       this.splMain.Panel1.ResumeLayout(false);
       this.splMain.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splMain)).EndInit();
       this.splMain.ResumeLayout(false);
+      this.ctxLstFiles.ResumeLayout(false);
       this.pnlImage.ResumeLayout(false);
       this.pnlFill.ResumeLayout(false);
       this.pnlBottom.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
-      this.ctxLstFiles.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }

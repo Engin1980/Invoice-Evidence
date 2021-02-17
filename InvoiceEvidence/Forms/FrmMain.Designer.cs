@@ -33,6 +33,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.btnAbout = new System.Windows.Forms.Button();
       this.btnSettings = new System.Windows.Forms.Button();
       this.chkColorize = new System.Windows.Forms.CheckBox();
       this.label2 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.btnAbout);
       this.panel1.Controls.Add(this.btnSettings);
       this.panel1.Controls.Add(this.chkColorize);
       this.panel1.Controls.Add(this.label2);
@@ -76,6 +78,16 @@
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(1109, 71);
       this.panel1.TabIndex = 1;
+      // 
+      // btnAbout
+      // 
+      this.btnAbout.Image = ((System.Drawing.Image)(resources.GetObject("btnAbout.Image")));
+      this.btnAbout.Location = new System.Drawing.Point(370, 12);
+      this.btnAbout.Name = "btnAbout";
+      this.btnAbout.Size = new System.Drawing.Size(48, 48);
+      this.btnAbout.TabIndex = 10;
+      this.btnAbout.UseVisualStyleBackColor = true;
+      this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
       // 
       // btnSettings
       // 
@@ -308,6 +320,7 @@
       this.Controls.Add(this.pnlFill);
       this.Controls.Add(this.panel1);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmMain";
       this.Text = "Invoice Evidence";
@@ -346,6 +359,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn orderNumberDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn itemsOverviewDataGridViewTextBoxColumn;
+    private System.Windows.Forms.Button btnAbout;
   }
 }
 

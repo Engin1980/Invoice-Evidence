@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
       this.grd = new System.Windows.Forms.PropertyGrid();
       this.pnlBottom = new System.Windows.Forms.Panel();
       this.btnSave = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
       this.Controls.Add(this.grd);
       this.Controls.Add(this.pnlBottom);
       this.Font = new System.Drawing.Font("Anonymous Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmSettings";
       this.Text = "Settings";

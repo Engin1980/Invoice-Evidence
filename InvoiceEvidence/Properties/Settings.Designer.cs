@@ -154,5 +154,17 @@ namespace InvoiceEvidence.Properties {
                 this["GhostscriptLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastDatabaseFolder {
+            get {
+                return ((string)(this["LastDatabaseFolder"]));
+            }
+            set {
+                this["LastDatabaseFolder"] = value;
+            }
+        }
     }
 }

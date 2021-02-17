@@ -7,7 +7,7 @@ namespace InvoiceEvidence
 {
   static class Program
   {
-    public static string DbPath { get; set; } = @"C:\Users\Vajgl\OneDrive - Ostravska univerzita\Synchronized\Faktury";
+    public static string DbPath { get; set; } = null;
     public static string DbFile
     {
       get => System.IO.Path.Combine(DbPath, "_invoices_db.json");
@@ -21,6 +21,8 @@ namespace InvoiceEvidence
     [STAThread]
     static void Main()
     {
+      Program.DbPath = Properties.Settings.Default.LastDatabaseFolder;
+
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       Application.Run(new Forms.FrmMain());

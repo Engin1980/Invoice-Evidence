@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace InvoiceEvidence.Forms
@@ -21,8 +22,10 @@ namespace InvoiceEvidence.Forms
 
     private void btnAnalyseNewFiles_Click(object sender, EventArgs e)
     {
-      var f = new FrmNewInvoice();
-      f.IgnoredFiles = Program.Db.IgnoredFiles;
+      var f = new FrmNewInvoice
+      {
+        IgnoredFiles = Program.Db.IgnoredFiles
+      };
       f.ShowDialog();
       RefreshView();
     }
@@ -152,11 +155,15 @@ namespace InvoiceEvidence.Forms
       FolderBrowserDialog fbd = new FolderBrowserDialog();
       fbd.SelectedPath = Program.DbPath;
       fbd.ShowNewFolderButton = true;
+      fbd.Description = "Select folder with invoices (images or PDFs):";
 
       if (fbd.ShowDialog() == DialogResult.OK)
       {
         Program.DbPath = fbd.SelectedPath;
         ReloadDatabase();
+
+        Properties.Settings.Default.LastDatabaseFolder = Program.DbPath;
+        Properties.Settings.Default.Save();
       }
     }
 
@@ -225,6 +232,10 @@ namespace InvoiceEvidence.Forms
     private void FrmMain_Load(object sender, EventArgs e)
     {
       cmbOrderBy.SelectedIndex = 0;
+      if (string.IsNullOrEmpty(Program.DbPath))
+      {
+        btnChangeFolder_Click(null, null);
+      }
       ReloadDatabase();
     }
 
@@ -314,6 +325,11 @@ namespace InvoiceEvidence.Forms
         txtQuickFilter.Text = "";
         e.Handled = true;
       }
+    }
+
+    private void btnAbout_Click(object sender, EventArgs e)
+    {
+      new FrmAbout().ShowDialog();
     }
   }
 }

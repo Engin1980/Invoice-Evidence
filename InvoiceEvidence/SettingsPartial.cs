@@ -106,6 +106,10 @@ namespace InvoiceEvidence.Properties
         category: "GhostScript",
         displayName: "Ghostscript location",
         description: "Folder where gswin64c.exe is located."));
+      pds.Add(SimplePropertyDescriptor.Create("LastDatabaseFolder",
+        category: "Behavior",
+        displayName: "Last database folder",
+        description: "The last folder set as database folder with invoices."));
 
       // add the default ones
       PropertyDescriptorCollection tmp = TypeDescriptor.GetProperties(typeof(Settings));

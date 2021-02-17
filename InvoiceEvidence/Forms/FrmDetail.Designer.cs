@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetail));
       this.invoiceDetail = new InvoiceEvidence.Controls.InvoiceDetail();
       this.SuspendLayout();
       // 
@@ -49,8 +50,9 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
       this.Controls.Add(this.invoiceDetail);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmDetail";
-      this.Text = "FrmDetail";
+      this.Text = "Invoice detail";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDetail_FormClosed);
       this.ResumeLayout(false);
 

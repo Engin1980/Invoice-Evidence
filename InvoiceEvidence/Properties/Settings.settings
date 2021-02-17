@@ -35,5 +35,8 @@
     <Setting Name="GhostscriptLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files\gs\gs9.53.3\bin</Value>
     </Setting>
+    <Setting Name="LastDatabaseFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
