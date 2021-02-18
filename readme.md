@@ -13,7 +13,7 @@ Main features:
 
 * Simple addition of new invoices in the application
 * Text recognition from image supported during the invoice analysis
-* Simple storage representation (one folder on a drive) allowing to have such folder on 'Google Drive' or 'Microsoft OneDrive'.
+* Simple storage representation (one folder on a drive) allowing to have such folder on 'Google Drive' or 'Microsoft OneDrive' if synchronized with local folder on PC.
 * Ordering and searching in the application 
 
 ## More technical background
@@ -44,7 +44,9 @@ I have tested this only on 64bit OS and generally, only 64bit Windows OS is now 
 For now, there is no specific installer. In releases, there are only compiled binaries for x64 platform. To install the app, follow the steps:
 
 ## 1. Main application
-The main application is available at [Releases](https://github.com/Engin1980/Invoice-Evidence/releases) page. Download the specific release - ZIP file and unzip it into the target directory.
+The main application is available at [Releases](https://github.com/Engin1980/Invoice-Evidence/releases) page. Download the specific release - ZIP file and unzip it into the target directory. 
+
+Also, the application is based on .NET 4.5. Therefore, you have meet this prerequisity. You can download .NET 4.5 from [here](https://www.microsoft.com/en-us/download/details.aspx?id=30653).
 
 ## 2. Tesseract OCR
 The basic compiled Tesseract binaries are provided in release ZIP file. Check you have folder `tesseract-master.1153` in your application locatin.
