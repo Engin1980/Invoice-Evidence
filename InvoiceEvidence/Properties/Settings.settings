@@ -36,7 +36,7 @@
       <Value Profile="(Default)">C:\Program Files\gs\gs9.53.3\bin</Value>
     </Setting>
     <Setting Name="LastDatabaseFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">C:\Users\Vajgl\OneDrive - Ostravska univerzita\Synchronized\Faktury</Value>
     </Setting>
   </Settings>
 </SettingsFile>

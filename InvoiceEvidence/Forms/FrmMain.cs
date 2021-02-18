@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace InvoiceEvidence.Forms
@@ -282,6 +281,8 @@ namespace InvoiceEvidence.Forms
 
     private void grdItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
+      if (e.RowIndex < 0) return;
+
       Invoice invoice = visibleInvoices[e.RowIndex];
       FrmDetail frm = new FrmDetail
       {
@@ -330,6 +331,31 @@ namespace InvoiceEvidence.Forms
     private void btnAbout_Click(object sender, EventArgs e)
     {
       new FrmAbout().ShowDialog();
+    }
+
+    private void grdItems_KeyUp(object sender, KeyEventArgs e)
+    {
+      if (grdItems.SelectedRows.Count == 0)
+        return;
+      if (e.KeyCode != Keys.Delete)
+        return;
+      if (MessageBox.Show("This will delete all the selected invoices from database. Are you sure? (Note that their invoice files will be preserved. You must delete them manually.)",
+        "Delete selected invoices?",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question,
+        MessageBoxDefaultButton.Button2) == DialogResult.No)
+        return;
+
+      List<int> indicesToDelete = new List<int>();
+      foreach (DataGridViewRow row in grdItems.SelectedRows)
+        indicesToDelete.Add(row.Index);
+      indicesToDelete.Sort((a, b) => b.CompareTo(a));
+      foreach (var index in indicesToDelete)
+      {
+        Invoice invoice = this.visibleInvoices[index];
+        Program.Db.Invoices.Remove(invoice);
+      }
+      RefreshView();
     }
   }
 }

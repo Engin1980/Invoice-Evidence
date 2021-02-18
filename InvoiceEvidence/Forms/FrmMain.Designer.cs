@@ -46,14 +46,14 @@
       this.btnSave = new System.Windows.Forms.Button();
       this.pnlFill = new System.Windows.Forms.Panel();
       this.grdItems = new System.Windows.Forms.DataGridView();
+      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
       this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.shopNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.orderNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.itemsOverviewDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.pnlItems = new InvoiceEvidence.Controls.VerticalFlowPanel();
       this.panel1.SuspendLayout();
       this.pnlFill.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.grdItems)).BeginInit();
@@ -241,6 +241,20 @@
       this.grdItems.TabIndex = 3;
       this.grdItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdItems_CellDoubleClick);
       this.grdItems.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdItems_DataBindingComplete);
+      this.grdItems.KeyUp += new System.Windows.Forms.KeyEventHandler(this.grdItems_KeyUp);
+      // 
+      // invoiceBindingSource
+      // 
+      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
+      // 
+      // pnlItems
+      // 
+      this.pnlItems.AutoScroll = true;
+      this.pnlItems.AutoSize = true;
+      this.pnlItems.Location = new System.Drawing.Point(48, 22);
+      this.pnlItems.Name = "pnlItems";
+      this.pnlItems.Size = new System.Drawing.Size(174, 428);
+      this.pnlItems.TabIndex = 2;
       // 
       // dateDataGridViewTextBoxColumn
       // 
@@ -264,19 +278,19 @@
       // 
       this.shopNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.shopNameDataGridViewTextBoxColumn.DataPropertyName = "ShopName";
-      this.shopNameDataGridViewTextBoxColumn.HeaderText = "ShopName";
+      this.shopNameDataGridViewTextBoxColumn.HeaderText = "Shop Name";
       this.shopNameDataGridViewTextBoxColumn.Name = "shopNameDataGridViewTextBoxColumn";
       this.shopNameDataGridViewTextBoxColumn.ReadOnly = true;
-      this.shopNameDataGridViewTextBoxColumn.Width = 110;
+      this.shopNameDataGridViewTextBoxColumn.Width = 119;
       // 
       // orderNumberDataGridViewTextBoxColumn
       // 
       this.orderNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.orderNumberDataGridViewTextBoxColumn.DataPropertyName = "OrderNumber";
-      this.orderNumberDataGridViewTextBoxColumn.HeaderText = "OrderNumber";
+      this.orderNumberDataGridViewTextBoxColumn.HeaderText = "Order Number";
       this.orderNumberDataGridViewTextBoxColumn.Name = "orderNumberDataGridViewTextBoxColumn";
       this.orderNumberDataGridViewTextBoxColumn.ReadOnly = true;
-      this.orderNumberDataGridViewTextBoxColumn.Width = 137;
+      this.orderNumberDataGridViewTextBoxColumn.Width = 134;
       // 
       // totalPriceDataGridViewTextBoxColumn
       // 
@@ -285,32 +299,19 @@
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
       dataGridViewCellStyle1.Format = "N2";
       this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-      this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
+      this.totalPriceDataGridViewTextBoxColumn.HeaderText = "Total Price";
       this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
       this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
-      this.totalPriceDataGridViewTextBoxColumn.Width = 128;
+      this.totalPriceDataGridViewTextBoxColumn.Width = 85;
       // 
       // itemsOverviewDataGridViewTextBoxColumn
       // 
       this.itemsOverviewDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.itemsOverviewDataGridViewTextBoxColumn.DataPropertyName = "ItemsOverview";
-      this.itemsOverviewDataGridViewTextBoxColumn.HeaderText = "ItemsOverview";
+      this.itemsOverviewDataGridViewTextBoxColumn.HeaderText = "Items Overview";
       this.itemsOverviewDataGridViewTextBoxColumn.Name = "itemsOverviewDataGridViewTextBoxColumn";
       this.itemsOverviewDataGridViewTextBoxColumn.ReadOnly = true;
-      this.itemsOverviewDataGridViewTextBoxColumn.Width = 155;
-      // 
-      // invoiceBindingSource
-      // 
-      this.invoiceBindingSource.DataSource = typeof(InvoiceEvidenceLib.Invoice);
-      // 
-      // pnlItems
-      // 
-      this.pnlItems.AutoScroll = true;
-      this.pnlItems.AutoSize = true;
-      this.pnlItems.Location = new System.Drawing.Point(48, 22);
-      this.pnlItems.Name = "pnlItems";
-      this.pnlItems.Size = new System.Drawing.Size(174, 428);
-      this.pnlItems.TabIndex = 2;
+      this.itemsOverviewDataGridViewTextBoxColumn.Width = 150;
       // 
       // FrmMain
       // 
@@ -353,13 +354,13 @@
     private System.Windows.Forms.Panel pnlFill;
     private System.Windows.Forms.DataGridView grdItems;
     private System.Windows.Forms.BindingSource invoiceBindingSource;
+    private System.Windows.Forms.Button btnAbout;
     private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn shopNameDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn orderNumberDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn itemsOverviewDataGridViewTextBoxColumn;
-    private System.Windows.Forms.Button btnAbout;
   }
 }
 

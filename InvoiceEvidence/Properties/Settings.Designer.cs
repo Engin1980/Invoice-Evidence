@@ -157,7 +157,7 @@ namespace InvoiceEvidence.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Vajgl\\OneDrive - Ostravska univerzita\\Synchronized\\Faktury")]
         public string LastDatabaseFolder {
             get {
                 return ((string)(this["LastDatabaseFolder"]));

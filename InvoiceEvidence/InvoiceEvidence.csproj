@@ -248,9 +248,9 @@
   <PropertyGroup>
     <PostBuildEvent>cd ..
 cd ..
-powershell Set-ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-powershell ".\postBuild\postBuild.ps1"
-powershell Set-ExecutionPolicy RemoteSigned -Force -Scope CurrentUser
-cd .\bin\debug</PostBuildEvent>
+rem powershell Set-ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+rem powershell ".\postBuild\postBuild.ps1"
+rem powershell Set-ExecutionPolicy RemoteSigned -Force -Scope CurrentUser
+rem cd .\bin\debug</PostBuildEvent>
   </PropertyGroup>
 </Project>

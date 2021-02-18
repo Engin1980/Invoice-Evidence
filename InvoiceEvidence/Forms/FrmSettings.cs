@@ -25,6 +25,7 @@ namespace InvoiceEvidence.Forms
     private void btnSave_Click(object sender, EventArgs e)
     {
       Properties.Settings.Default.Save();
+      this.Close();
     }
   }
 }
