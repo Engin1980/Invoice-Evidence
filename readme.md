@@ -29,25 +29,43 @@ Currently, only the first page of PDF file is processed. For other pages, custom
 
 ---
 
-## Installation
-
-### 1. Main application
-For now, there is no specific installer. Just download the sources and compile them.
-
-TODO
-
-### 2. PDF Recongition (GhostScript)
-
-To apply image recognition over PDF, [GhostScript](https://www.ghostscript.com/index.html) must be installed. It can be downloaded from [here](https://www.ghostscript.com/download/gsdnld.html). Note where the script is installed, you will need to know `gswin64c.exe` location.
+# Installation
 
 ---
 **Note**
-As name assumes, I have tested this only on 64bit OS. For 32bit OS, source code improvements must be made.
+I have tested this only on 64bit OS and generally, only 64bit Windows OS is now supported. For 32bit support, source code improvements must be made.
 
 ---
 
-### 3. Settings update
+For now, there is no specific installer. In releases, there are only compiled binaries for x64 platform. To install the app, follow the steps:
 
-After the first application startup, ensure the settings are set correctly (mainly Ghostscript directory, Tesseract directory, temporal directory). Settings can be opened via "bars-with-buttons" icon. Update the settings if necessary. No reboot is required.
+## 1. Main application
+The main application is available at [Releases](https://github.com/Engin1980/Invoice-Evidence/releases) page. Download the specific release - ZIP file and unzip it into the target directory.
+
+## 2. Tesseract OCR
+The basic compiled Tesseract binaries are provided in release ZIP file. Check you have folder `tesseract-master.1153` in your application locatin.
+
+To add the support for other than English language, you must download the language training files on your own. Find the appropriate Tesseract training file for the required language [here](https://github.com/tesseract-ocr/tessdata) and put it in the folder `tesseract-master.1153\tessdata`. Note the file language prefix (e.g., `eng` for English, `fra` for Francais, `cze` for Czech). You will need it to update the application settings later.
+
+## 3. PDF Recongition (Optional))
+
+To enable PDF file recognition support, [GhostScript](https://www.ghostscript.com/index.html) must be installed providing conversion of JPEG to PDF. It can be downloaded from [here](https://www.ghostscript.com/download/gsdnld.html). Note where the script is installed, you will need to know `gswin64c.exe` location to set up the application later.
+
+# Initial setup
+
+For the correct usage, you will need to set up the application settings correctly.
+
+1. Start the application using `InvoiceEvidence.exe`.
+2. If the application asks for the folder, just close and ignore the dialog. 
+3. Open the settings window using the settings icon ![settings-icon](https://raw.githubusercontent.com/Engin1980/Invoice-Evidence/master/InvoiceEvidence/icons/settings.png).
+4. Ensure you have set:
+   * Supported file extension - `jpg;png`, change to `jpg;png;pdf` to enable PDF support;
+   * Temp directory set to some valid temporal directory;
+   * GhostScript location set to the correct GhostScript location, where `gsw64c.exe` is located 
+   * Tesseract directory correctly set to the `tesseract-master.1153` folder.
+   * Tesseract languages set to the required languages connected with plus sign, e.g. `eng+cze+fra`. Note that language abbreviation must match the training file abbreviation.
+
+# Basic usage of the application
+
 
 
