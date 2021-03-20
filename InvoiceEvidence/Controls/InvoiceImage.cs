@@ -214,7 +214,7 @@ namespace InvoiceEvidence.Controls
       {
         using (Bitmap subimage = image.Clone(r, image.PixelFormat))
         {
-          s = ocr.ReadText(image);
+          s = ocr.ReadText(subimage);
         }
       }
 
