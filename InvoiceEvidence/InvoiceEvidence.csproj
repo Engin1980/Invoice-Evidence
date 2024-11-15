@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>InvoiceEvidence</RootNamespace>
     <AssemblyName>InvoiceEvidence</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -57,7 +57,7 @@
     <StartupObject>InvoiceEvidence.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>43B351C1CF310D3E944078E4914F4697B0838748</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>08433731EA018F2DE8B83D4541F652EDC874C813</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>InvoiceEvidence_TemporaryKey.pfx</ManifestKeyFile>
@@ -190,6 +190,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="InvoiceEvidence_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="postBuild\postBuild.ps1" />
     <None Include="Properties\app.manifest" />
