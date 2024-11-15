@@ -16,7 +16,7 @@ namespace InvoiceEvidence
       do
       {
         ret = System.IO.Path.Combine(
-          Properties.Settings.Default.TempDirectory, 
+          Program.AppSettings.TempDirectory, 
           System.IO.Path.GetRandomFileName() + "." + extension);
       } while (System.IO.File.Exists(ret));
       return ret;

@@ -29,9 +29,9 @@ namespace InvoiceEvidence.Controls
         if (value != null)
         {
           invoiceBindingSource.DataSource = value;
-          picInvoice.SetImageFile(
-            System.IO.Path.Combine(Program.DbPath, value.FileName));
-          picInvoice.ZoomFit();
+          string imageFile = System.IO.Path.Combine(Program.DbPath, value.FileName);
+          picInvoice.SetImageFile(imageFile, out bool isSuccess);
+          if (isSuccess) picInvoice.ZoomFit();
         }
         else
           picInvoice.ClearImageFile();

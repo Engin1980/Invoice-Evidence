@@ -85,7 +85,7 @@ namespace InvoiceEvidence.Forms
 
     private bool IsFileNameWithAcceptedExtension(string fileName)
     {
-      bool ret = Properties.Settings.Default.SupportedExtension.Split(';').Any(q => fileName.EndsWith(q));
+      bool ret = Program.AppSettings.SupportedExtension.Split(';').Any(q => fileName.EndsWith(q));
       return ret;
     }
 

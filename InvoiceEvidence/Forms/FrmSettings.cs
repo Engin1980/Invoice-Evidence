@@ -19,12 +19,12 @@ namespace InvoiceEvidence.Forms
 
     private void FrmSettings_Load(object sender, EventArgs e)
     {
-      this.grd.SelectedObject = Properties.Settings.Default;
+      this.grd.SelectedObject = Program.AppSettings;
     }
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-      Properties.Settings.Default.Save();
+      Program.AppSettings.Save();
       this.Close();
     }
   }

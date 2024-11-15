@@ -6,9 +6,9 @@ namespace InvoiceEvidence.OCR
 {
   public class TesseractOCR : IOCR
   {
-    private static readonly string TESSERACT_MASTER_DIR = Properties.Settings.Default.TesseractDirectory;
-    private static string TEMPORAL_DIRECTORY { get; set; } = Properties.Settings.Default.TempDirectory;
-    private static readonly string LANGUAGES = Properties.Settings.Default.TesseractLanguages;
+    private static readonly string TESSERACT_MASTER_DIR = Program.AppSettings.TesseractDirectory;
+    private static string TEMPORAL_DIRECTORY { get; set; } = Program.AppSettings.TempDirectory;
+    private static readonly string LANGUAGES = Program.AppSettings.TesseractLanguages;
     private static string GetTesseractMasterDirectory()
     {
       string ret = System.Reflection.Assembly.GetEntryAssembly().Location;

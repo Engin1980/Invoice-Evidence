@@ -90,7 +90,7 @@ namespace InvoiceEvidence.Controls
       pic.Image = null;
     }
 
-    public void SetImageFile(string fileName)
+    public void SetImageFile(string fileName, out bool isSuccess)
     {
       OriginalImageFileName = fileName;
       Image img;
@@ -103,6 +103,7 @@ namespace InvoiceEvidence.Controls
         {
           lblMessage.Text = "PDF-as-image view is not available. " + ex.GetJoinedMessages();
           pic.Visible = false;
+          isSuccess = false;
           return;
         }
       else
@@ -114,6 +115,7 @@ namespace InvoiceEvidence.Controls
         {
           lblMessage.Text = "Image preview is not available. " + ex.GetJoinedMessages();
           pic.Visible = false;
+          isSuccess = false;
           return;
         }
 
@@ -121,6 +123,7 @@ namespace InvoiceEvidence.Controls
       OriginalImage = img;
       RefreshImage();
       pic.Visible = true;
+      isSuccess = true;
     }
 
     public void ZoomFit()

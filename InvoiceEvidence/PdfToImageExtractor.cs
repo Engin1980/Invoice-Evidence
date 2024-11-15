@@ -15,10 +15,10 @@ namespace InvoiceEvidence
       string inFile = fileName;
       string outFile = EIO.GetTempFileName(".jpg");
       string gsFileName;
-      if (string.IsNullOrEmpty(Properties.Settings.Default.GhostscriptLocation))
+      if (string.IsNullOrEmpty(Program.AppSettings.GhostscriptLocation))
         gsFileName = "gswin64c.exe";
       else
-        gsFileName = System.IO.Path.Combine(Properties.Settings.Default.GhostscriptLocation, "gswin64c.exe");
+        gsFileName = System.IO.Path.Combine(Program.AppSettings.GhostscriptLocation, "gswin64c.exe");
 
       ProcessStartInfo psi = new ProcessStartInfo()
       {

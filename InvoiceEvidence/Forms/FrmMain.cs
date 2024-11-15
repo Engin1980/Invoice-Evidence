@@ -31,7 +31,7 @@ namespace InvoiceEvidence.Forms
 
     private void RefreshView()
     {
-      if (Properties.Settings.Default.MainFormExtendedView)
+      if (Program.AppSettings.MainFormExtendedView)
       {
         grdItems.Visible = false;
         pnlItems.Visible = true;
@@ -88,11 +88,11 @@ namespace InvoiceEvidence.Forms
     private Color GetBackColorForInvoice(Invoice invoice)
     {
       TimeSpan ts = DateTime.Now - invoice.Date;
-      if (ts.TotalDays > Properties.Settings.Default.InvoiceOldDaysCount)
+      if (ts.TotalDays > Program.AppSettings.InvoiceOldDaysCount)
         // old ones
-        return Properties.Settings.Default.InvoiceOldBackColor;
-      else if (ts.TotalDays < Properties.Settings.Default.InvoiceNewDaysCount)
-        return Properties.Settings.Default.InvoiceNewBackColor;
+        return Program.AppSettings.InvoiceOldBackColor;
+      else if (ts.TotalDays < Program.AppSettings.InvoiceNewDaysCount)
+        return Program.AppSettings.InvoiceNewBackColor;
       else
         return SystemColors.Control;
     }
@@ -161,8 +161,8 @@ namespace InvoiceEvidence.Forms
         Program.DbPath = fbd.SelectedPath;
         ReloadDatabase();
 
-        Properties.Settings.Default.LastDatabaseFolder = Program.DbPath;
-        Properties.Settings.Default.Save();
+        Program.AppSettings.LastDatabaseFolder = Program.DbPath;
+        Program.AppSettings.Save();
       }
     }
 
@@ -256,7 +256,7 @@ namespace InvoiceEvidence.Forms
       }
     }
 
-    private static readonly int VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH = Properties.Settings.Default.MainFormVerticalScrollbarPlaceholderWith;
+    private static readonly int VERTICAL_SCROLLBAR_PLACEHOLDER_WIDTH = Program.AppSettings.MainFormVerticalScrollbarPlaceholderWith;
 
     private void chkColorize_CheckedChanged(object sender, EventArgs e)
     {

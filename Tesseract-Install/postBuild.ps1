@@ -1,0 +1,2 @@
+﻿Expand-Archive .\tesseract-master.1153.zip -DestinationPath ..\InvoiceEvidence\bin\Debug\net8.0-windows\ -Force
+Copy-Item .\tessdata\* -Destination ..\InvoiceEvidence\bin\Debug\net8.0-windows\tesseract-master.1153\tessdata\ -Force -Recurse

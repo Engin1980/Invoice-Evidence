@@ -1,13 +1,13 @@
-﻿using InvoiceEvidenceLib;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using InvoiceEvidence.Forms;
+using InvoiceEvidenceLib;
+using Microsoft.Extensions.Configuration;
 
 namespace InvoiceEvidence
 {
-  static class Program
+  internal static class Program
   {
-    public static string DbPath { get; set; } = null;
+    public static AppSettings AppSettings { get; private set; } = null!;
+    public static string DbPath { get; set; } = null!;
     public static string DbFile
     {
       get => System.IO.Path.Combine(DbPath, "_invoices_db.json");
@@ -16,16 +16,18 @@ namespace InvoiceEvidence
     public static List<Invoice> Invoices { get => Program.Db.Invoices; }
 
     /// <summary>
-    /// The main entry point for the application.
+    ///  The main entry point for the application.
     /// </summary>
     [STAThread]
     static void Main()
     {
-      Program.DbPath = Properties.Settings.Default.LastDatabaseFolder;
+      Program.AppSettings = AppSettings.Load();
+      Program.DbPath = Program.AppSettings.LastDatabaseFolder;
 
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Forms.FrmMain());
+      // To customize application configuration such as set high DPI settings or default font,
+      // see https://aka.ms/applicationconfiguration.
+      ApplicationConfiguration.Initialize();
+      Application.Run(new FrmMain());
     }
   }
 }

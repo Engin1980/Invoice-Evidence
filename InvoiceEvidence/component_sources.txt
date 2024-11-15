@@ -1,9 +1,0 @@
-﻿Icons:
-- main app icon
-  https://iconarchive.com/show/free-folder-icons-by-iconshock/folder-invoices-icon.html
-- tool icons
-	https://github.com/pasnox/oxygen-icons-png
-	https://iconarchive.com/show/oxygen-icons-by-oxygen-icons.org.16.html
-
-Tesseract:
-	https://github.com/doxakis/How-to-use-tesseract-ocr-4.0-with-csharp
